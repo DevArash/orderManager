@@ -1,21 +1,18 @@
-import { fieldType } from "../../schemas/utils/fieldType.ts";
+import { Center, PuCenter, centerSelectable } from "./center.ts";
 import { Base } from "../../schemas/utils/bases/base.ts";
-import { Center, PuCenter } from "./center.ts";
+import { fieldType } from "../../schemas/utils/fieldType.ts";
 
 export interface PuTable {
   tableCapacity: number;
   reservable: boolean;
-  section?: Section;
 }
 
 export interface EmTable {
   center: PuCenter;
-  reservations: Reservation[];
 }
 
 export interface InRelTable {
   center: Center;
-  reservations: Reservation[];
 }
 
 export interface OutRelTable {}
@@ -26,11 +23,6 @@ export interface RTable extends RBase {
 }
 
 export interface Table extends PuTable, EmTable, Base {}
-
-enum Section {
-  Family = "Family",
-  Normal = "Normal",
-}
 
 export const tableSelectable = (depth: number = 4): any => {
   depth--;
@@ -48,11 +40,6 @@ export const tableSelectable = (depth: number = 4): any => {
           type: "object",
           optional: true,
           props: centerSelectable(depth),
-        },
-        reservation: {
-          type: "object",
-          optional: true,
-          props: reservationSelectable(depth),
         },
       }
     : returnObj;

@@ -3,6 +3,6 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "beef"
+      "model": "Center"
   }
 }

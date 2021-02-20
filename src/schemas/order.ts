@@ -1,27 +1,19 @@
-import { Base } from "../../schemas/utils/bases/base.ts";
 import { Dish } from "./dish.ts";
+import { Base } from "../../schemas/utils/bases/base.ts";
 
 interface PuOrder {
   orderID: Bson.ObjectId;
-  //servedAt: string => why?
-  noOfCustomers: number;
   orderRating: Rating;
-  paymentStatus: PaymentStatus;
   orderStatus: OrderStatus;
   totalPrice: number;
   orderType: OrderType;
   preprationTime?: Date;
-  // customerPhoneNumber: number;
+  customerPhoneNumber: number;
 }
 
 interface Rating {
   rateNumber: number;
   rateDescribtion: string;
-}
-
-enum PaymentStatus {
-  Paid = "PAID",
-  NotPaid = "NOTPAID",
 }
 
 enum OrderStatus {
