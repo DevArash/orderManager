@@ -1,8 +1,9 @@
+import db from "../../db.ts";
 import { Menu } from "./menu.ts";
 import { Order } from "./order.ts";
 import { Table, tableSelectable } from "./table.ts";
-import { Base } from "../../schemas/utils/bases/base.ts";
-import { fieldType } from "../../schemas/utils/fieldType.ts";
+import { Base } from "../schemas/utils/bases/base.ts";
+import { fieldType } from "../schemas/utils/fieldType.ts";
 
 interface Certificate {
   title: string;

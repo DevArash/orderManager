@@ -1,6 +1,7 @@
+import db from "../../db.ts";
+import { Base } from "../schemas/utils/bases/base.ts";
+import { fieldType } from "../schemas/utils/fieldType.ts";
 import { Center, PuCenter, centerSelectable } from "./center.ts";
-import { Base } from "../../schemas/utils/bases/base.ts";
-import { fieldType } from "../../schemas/utils/fieldType.ts";
 
 export interface PuTable {
   tableCapacity: number;

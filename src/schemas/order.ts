@@ -1,5 +1,6 @@
 import { Dish } from "./dish.ts";
-import { Base } from "../../schemas/utils/bases/base.ts";
+import { Base } from "../schemas/utils/bases/base.ts";
+import { Bson } from "../../db.ts";
 
 interface PuOrder {
   orderID: Bson.ObjectId;

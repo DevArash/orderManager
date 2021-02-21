@@ -1,5 +1,4 @@
 import { Dish } from "./dish.ts";
-import { MenuType } from "./menuType.ts";
 
 interface MenuType {
   title: string;
