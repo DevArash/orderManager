@@ -1,8 +1,9 @@
 import { Dish } from "./dish.ts";
+import { Rating } from "./rating.ts";
+import db, { Bson } from "../../db.ts";
 import { Base } from "../schemas/utils/bases/base.ts";
-import { Bson } from "../../db.ts";
 
-interface PuOrder {
+export interface PuOrder extends Base {
   orderID: Bson.ObjectId;
   orderRating: Rating;
   orderStatus: OrderStatus;
@@ -10,11 +11,6 @@ interface PuOrder {
   orderType: OrderType;
   preprationTime?: Date;
   customerPhoneNumber: number;
-}
-
-interface Rating {
-  rateNumber: number;
-  rateDescribtion: string;
 }
 
 enum OrderStatus {
@@ -38,4 +34,6 @@ export interface InRelOrder {
 
 export interface OutRelOrder {}
 
-export interface Order extends PuOrder, EmOrder, Base {}
+export interface Order extends PuOrder, EmOrder {}
+
+export const centers = db.collection<Order>("Orders");

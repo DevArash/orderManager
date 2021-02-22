@@ -4,7 +4,7 @@ export interface body {
 
     doit: string;
   };
-  details: unknown;
+  details: any;
 }
 
 /**

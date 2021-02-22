@@ -3,6 +3,7 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Center"
+      "model": "Center",
+      "doit": "Hello There"
   }
 }

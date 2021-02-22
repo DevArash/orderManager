@@ -1,7 +1,8 @@
 import db from "../../db.ts";
-import { Menu } from "./menu.ts";
-import { Order } from "./order.ts";
-import { Table, tableSelectable } from "./table.ts";
+import { PuOrder } from "./order.ts";
+import { RType } from "./utils/rType.ts";
+import { menuSelectable, PuMenu } from "./menu.ts";
+import { PuTable, tableSelectable } from "./table.ts";
 import { Base } from "../schemas/utils/bases/base.ts";
 import { fieldType } from "../schemas/utils/fieldType.ts";
 
@@ -12,7 +13,13 @@ interface Certificate {
   issuedBy: string;
 }
 
-export interface PuCenter {
+interface ActiveHours {
+  title?: string;
+  open: number;
+  close: number;
+}
+
+export interface PuCenter extends Base {
   name: string;
   owner: {
     name: string;
@@ -27,48 +34,46 @@ export interface PuCenter {
   };
   phone: number;
   certificate: Certificate[];
-  activeHours: { open: string; close: string };
+  activeHours: ActiveHours[];
 }
 
 export interface EmCenter {
-  menus: Menu[];
-  tables: Table[];
+  menus: PuMenu[];
+  tables: PuTable[];
 }
 
 export interface InRelCenter {
-  menus: Menu[];
-  tables: Table[];
+  menus: PuMenu[];
+  tables: PuTable[];
 }
 
 export interface OutRelCenter {
-  orders: Order[];
+  orders: PuOrder[];
 }
 
 /**@interface
  * this is the main interface and the collection in mongoDB is based on this collection
  */
-export interface Center extends EmCenter, PuCenter, Base {}
+
+export interface Center extends EmCenter, PuCenter {}
 
 export interface RCenter {
-  _id: 0 | 1;
-  name: 0 | 1;
+  _id: RType;
+  name: RType;
   owner: {
-    name: 0 | 1;
-    phone: 0 | 1;
+    name: RType;
+    phone: RType;
   };
   address: {
-    state: 0 | 1;
-    city: 0 | 1;
-    mainStreet: 0 | 1;
-    houseNumber: 0 | 1;
-    postalCode: 0 | 1;
+    state: RType;
+    city: RType;
+    mainStreet: RType;
+    houseNumber: RType;
+    postalCode: RType;
   };
-  phone: 0 | 1;
-  certificate: 0 | 1;
-  activeHours: {
-    open: 0 | 1;
-    close: 0 | 1;
-  };
+  phone: RType;
+  certificate: RType;
+  activeHours: RType;
 }
 
 export const centerSelectable = (depth: number = 4) => {
@@ -97,12 +102,12 @@ export const centerSelectable = (depth: number = 4) => {
   return depth > 0
     ? {
         ...returnObj,
-        city: {
+        menu: {
           type: "object",
           optional: true,
           props: menuSelectable(depth),
         },
-        state: {
+        table: {
           type: "object",
           optional: true,
           props: tableSelectable(depth),

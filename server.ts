@@ -12,7 +12,7 @@ type model = "Testing" | "Center";
 
 for await (const req of server) {
   try {
-    const response: () => Promise<unknown> = async () => {
+    const response: () => Promise<any> = async () => {
       const {
         wants: { model, doit },
         details,
@@ -20,7 +20,7 @@ for await (const req of server) {
       } = await requestParser(req);
 
       return {
-        ["Testing"]: async () => await console.log("Functon works"),
+        ["Testing"]: async () => await console.log("Testing works"),
         ["Center"]: async () => await console.log("Center added"),
       }[model]();
     };
