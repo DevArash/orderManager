@@ -1,19 +1,19 @@
 import db from "../../db.ts";
 import { PuOrder } from "./order.ts";
 import { RType } from "./utils/rType.ts";
-import { menuSelectable, PuMenu } from "./menu.ts";
-import { PuTable, tableSelectable } from "./table.ts";
+import { menuSelectable, PuMenu, RMenu } from "./menu.ts";
+import { PuTable, RTable, tableSelectable } from "./table.ts";
 import { Base } from "../schemas/utils/bases/base.ts";
 import { fieldType } from "../schemas/utils/fieldType.ts";
 
-interface Certificate {
+export interface Certificate {
   title: string;
   issuedAt: string;
   expiryDate: string;
   issuedBy: string;
 }
 
-interface ActiveHours {
+export interface ActiveHours {
   title?: string;
   open: number;
   close: number;
@@ -74,6 +74,8 @@ export interface RCenter {
   phone: RType;
   certificate: RType;
   activeHours: RType;
+  menus: RMenu;
+  tables: RTable;
 }
 
 export const centerSelectable = (depth: number = 4) => {
