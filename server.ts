@@ -1,5 +1,6 @@
 import { requestParser } from "./src/utils/mod.ts";
 import { serve } from "https://deno.land/std/http/server.ts";
+import { CenterDoit, centerFns } from "./src/functions/center/mod.ts";
 
 const responseHeader: Headers = new Headers();
 
@@ -21,7 +22,7 @@ for await (const req of server) {
 
       return {
         ["Testing"]: async () => await console.log("Testing works"),
-        ["Center"]: async () => await console.log("Center added"),
+        ["Center"]: async () => await centerFns(doit as CenterDoit, details),
       }[model]();
     };
     req.respond({

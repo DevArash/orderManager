@@ -4,6 +4,6 @@ content-type: application/json
 {
   "wants": {
       "model": "Center",
-      "doit": "Hello There"
+      "doit": "adding"
   }
 }

@@ -4,7 +4,7 @@ import { RType } from "./utils/rType.ts";
 import { Base } from "./utils/bases/base.ts";
 import { fieldType } from "./utils/fieldType.ts";
 
-interface MenuCategory {
+export interface MenuCategory {
   title: string;
   description: string;
   dishes: Dish[];
@@ -15,7 +15,7 @@ export interface PuMenu extends Base {
   subHeading: string;
   icon: File;
   description: string;
-  menuType: MenuCategory[];
+  menuCategory: MenuCategory[];
 }
 
 export interface Menu extends PuMenu {}
@@ -41,4 +41,4 @@ export const menuSelectable = (depth: number = 4) => {
   };
 };
 
-export const centers = db.collection<Menu>("Menus");
+export const menus = db.collection<Menu>("Menus");

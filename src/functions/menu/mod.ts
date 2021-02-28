@@ -1,7 +1,7 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Center } from "../../schemas/center.ts";
+import { Menu } from "../../schemas/menu.ts";
 import { throwError } from "../../utils/throwError.ts";
-import { addingCenter } from "./adding.ts";
+import { addingMenu } from "./adding.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -11,15 +11,15 @@ const check = v.compile({
   },
 });
 
-export type CenterDoit = "adding";
+export type MenuDoit = "adding";
 
-type CenterFns = (doit: CenterDoit, details: any) => Promise<Partial<Center>>;
+type MenuFns = (doit: MenuDoit, details: any) => Promise<Partial<Menu>>;
 
-export const centerFns: CenterFns = (doit, details) => {
+export const menuFns: MenuFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {
-        ["adding"]: async () => await addingCenter(details),
+        ["adding"]: async () => await addingMenu(details),
       }[doit]()
     : throwError(checkDoit[0].message);
 };

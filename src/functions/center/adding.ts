@@ -7,7 +7,7 @@ import {
   RCenter,
   ActiveHours,
   Certificate,
-} from "../../schemas/mod.ts";
+} from "../../schemas/center.ts";
 import { throwError } from "../../utils/throwError.ts";
 import { getCenter } from "./funcs/getCenter.ts";
 
