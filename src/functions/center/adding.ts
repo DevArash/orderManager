@@ -1,4 +1,4 @@
-import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
+import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
 import {
   centers,

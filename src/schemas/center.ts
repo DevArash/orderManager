@@ -6,6 +6,8 @@ import { PuTable, RTable, tableSelectable } from "./table.ts";
 import { Base } from "../schemas/utils/bases/base.ts";
 import { fieldType } from "../schemas/utils/fieldType.ts";
 
+//TODO: FIX DATE TYPE
+
 export interface Certificate {
   title: string;
   issuedAt: string;
@@ -19,19 +21,23 @@ export interface ActiveHours {
   close: number;
 }
 
+interface Owner {
+  name: string;
+  phone: number;
+}
+
+interface Address {
+  state: string;
+  city: string;
+  mainStreet: string;
+  houseNumber: number;
+  postalCode: number;
+}
+
 export interface PuCenter extends Base {
   name: string;
-  owner: {
-    name: string;
-    phone: number;
-  };
-  address: {
-    state: string;
-    city: string;
-    mainStreet: string;
-    houseNumber: number;
-    postalCode: number;
-  };
+  owner: Owner;
+  address: Address;
   phone: number;
   certificate: Certificate[];
   activeHours: ActiveHours[];
@@ -60,17 +66,8 @@ export interface Center extends EmCenter, PuCenter {}
 export interface RCenter {
   _id: RType;
   name: RType;
-  owner: {
-    name: RType;
-    phone: RType;
-  };
-  address: {
-    state: RType;
-    city: RType;
-    mainStreet: RType;
-    houseNumber: RType;
-    postalCode: RType;
-  };
+  owner: RType;
+  address: RType;
   phone: RType;
   certificate: RType;
   activeHours: RType;
@@ -83,23 +80,11 @@ export const centerSelectable = (depth: number = 4) => {
   const returnObj = {
     _id: fieldType,
     name: fieldType,
-    owner: {
-      name: fieldType,
-      phone: fieldType,
-    },
-    address: {
-      state: fieldType,
-      city: fieldType,
-      mainStreet: fieldType,
-      houseNumber: fieldType,
-      postalCode: fieldType,
-    },
+    owner: fieldType,
+    address: fieldType,
     phone: fieldType,
     certificate: fieldType,
-    acticveHours: {
-      open: fieldType,
-      close: fieldType,
-    },
+    acticveHours: fieldType,
   };
   return depth > 0
     ? {
