@@ -5,7 +5,6 @@ import {
   centerSelectable,
   Center,
   RCenter,
-  ActiveHours,
   Certificate,
 } from "../../schemas/center.ts";
 import { throwError } from "../../utils/throwError.ts";
@@ -37,23 +36,19 @@ const check = v.compile({
               postalCode: { type: "number" },
             },
           },
-          phone: { type: "number" },
+          phone: { type: "number", optional: true },
           certificate: {
             type: "object",
             props: {
               title: { type: "string" },
-              issuedAt: { type: "string" },
-              expiryDate: { type: "string" },
+              issuedAt: { type: "date" },
+              expiryDate: { type: "date" },
               issuedBy: { type: "string" },
             },
           },
           activeHours: {
-            type: "object",
-            props: {
-              title: { type: "string" },
-              open: { type: "string" },
-              close: { type: "string" },
-            },
+            type: "tuple",
+            items: ["number", "number", { type: "string", empty: true }],
           },
         },
       },
@@ -82,7 +77,7 @@ interface addingCenterDetails {
     };
     phone: number;
     certificate: Certificate[];
-    activeHours: ActiveHours[];
+    activeHours: [number, number, string?][];
   };
   get: RCenter;
 }

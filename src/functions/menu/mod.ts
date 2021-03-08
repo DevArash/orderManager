@@ -7,11 +7,11 @@ const v = new FastestValidator();
 const check = v.compile({
   doit: {
     type: "enum",
-    values: ["adding"],
+    values: ["Adding"],
   },
 });
 
-export type MenuDoit = "adding";
+export type MenuDoit = "Adding";
 
 type MenuFns = (doit: MenuDoit, details: any) => Promise<Partial<Menu>>;
 
@@ -19,7 +19,7 @@ export const menuFns: MenuFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {
-        ["adding"]: async () => await addingMenu(details),
+        ["Adding"]: async () => await addingMenu(details),
       }[doit]()
     : throwError(checkDoit[0].message);
 };

@@ -6,15 +6,15 @@ import { fieldType } from "./utils/fieldType.ts";
 
 export interface MenuCategory {
   title: string;
-  description: string;
+  description?: string;
   dishes: Dish[];
 }
 
 export interface PuMenu extends Base {
   name: string;
-  subHeading: string;
-  icon: File;
-  description: string;
+  subHeading?: string;
+  icon?: File;
+  description?: string;
   menuCategory: MenuCategory[];
 }
 

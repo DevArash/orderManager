@@ -6,19 +6,11 @@ import { PuTable, RTable, tableSelectable } from "./table.ts";
 import { Base } from "../schemas/utils/bases/base.ts";
 import { fieldType } from "../schemas/utils/fieldType.ts";
 
-//TODO: FIX DATE TYPE
-
 export interface Certificate {
   title: string;
-  issuedAt: string;
-  expiryDate: string;
+  issuedAt: Date;
+  expiryDate: Date;
   issuedBy: string;
-}
-
-export interface ActiveHours {
-  title?: string;
-  open: number;
-  close: number;
 }
 
 interface Owner {
@@ -29,7 +21,7 @@ interface Owner {
 interface Address {
   state: string;
   city: string;
-  mainStreet: string;
+  mainStreet: string; //TODO: CHANGE NAME
   houseNumber: number;
   postalCode: number;
 }
@@ -38,9 +30,10 @@ export interface PuCenter extends Base {
   name: string;
   owner: Owner;
   address: Address;
-  phone: number;
+  phone?: number;
   certificate: Certificate[];
-  activeHours: ActiveHours[];
+  //activeHours:[open, close, title (like mornning or breakfast)]
+  activeHours: [number, number, string?][];
 }
 
 export interface EmCenter {

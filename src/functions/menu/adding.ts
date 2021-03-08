@@ -19,22 +19,23 @@ const check = v.compile({
         type: "object",
         props: {
           name: { type: "string" },
-          subHeading: { type: "string" },
-          icon: { type: "File" }, //Not Sure File Type Exist
-          description: { type: "string" },
+          subHeading: { type: "string", optional: true },
+          icon: { type: "any", optional: true },
+          description: { type: "string", optional: true },
           menuCategory: {
             type: "object",
             props: {
               title: { type: "string" },
-              description: { type: "string" },
+              description: { type: "string", optional: true },
               dishes: {
                 type: "object",
                 props: {
                   name: { type: "string" },
                   price: { type: "number" },
-                  discount: { type: "number" },
+                  discount: { type: "number", optional: true },
                   recipe: {
                     type: "object",
+                    optional: true,
                     props: {
                       description: { type: "string" },
                       ingredients: { type: "array" },
@@ -56,7 +57,7 @@ const check = v.compile({
                         },
                       },
                     },
-                    calorie: { type: "number" },
+                    calorie: { type: "number", optional: true },
                   },
                 },
               },
@@ -76,9 +77,9 @@ const check = v.compile({
 interface addingMenuDetails {
   set: {
     name: string;
-    subHeading: string;
-    icon: File;
-    description: string;
+    subHeading?: string;
+    icon?: File;
+    description?: string;
     menuCategory: MenuCategory[];
   };
   get: RMenu;

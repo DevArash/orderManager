@@ -4,37 +4,24 @@ content-type: application/json
 {
   "wants": {
       "model": "Center",
-      "doit": "adding"
+      "doit": "Adding"
   },
   "details":{
-    "set":{
-      "name":"First Center",
-      "owner": {
-        "name": "Owner Name",
+"set":{
+      "name":"Center Name",
+      "owner":{
+        "name": "owner Name",
         "phone": 123
       },
-      "address": {
-        "state": "hamedan",
-        "city": "hamedan",
-        "mainStreet": "mehdieh",
-        "houseNumber": 1,
+      "address":{
+        "state":"hamedan",
+        "city":"hamedan",
+        "mainStreet":"mahdieh",
+        "houseNumber":1,
         "postalCode":1
       },
-      "phone": 8131111,
-      "certificate":{
-        "title": "TITLE",
-        "issuedAt": "ISSUEDAT",
-        "expiryDate": "EXPIRYDATE",
-        "issuedBy": "ISSUEDBY"
-      },
-      "activeHours":{
-        "title": "morning",
-        "open": "6",
-        "close": "10"
-      }
+      "activeHours":[6,10,"morning"]
     },
-    "get":{
-
-    }
+    "get":{}
   }
 }
