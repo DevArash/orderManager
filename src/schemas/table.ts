@@ -5,6 +5,7 @@ import { fieldType } from "../schemas/utils/fieldType.ts";
 import { Center, PuCenter, centerSelectable, RCenter } from "./center.ts";
 
 export interface PuTable extends Base {
+  tableNo?: number;
   tableCapacity: number;
   reservable: boolean;
 }
@@ -20,6 +21,7 @@ export interface InRelTable {
 export interface OutRelTable {}
 
 export interface RTable extends RBase {
+  tableNo: RType;
   tableCapacity: RType;
   reservable: RType;
   centers: RCenter;
@@ -31,9 +33,9 @@ export const tableSelectable = (depth: number = 4): any => {
   depth--;
   const returnObj = {
     ...tableSelectable(),
+    tableNo: fieldType,
     tableCapacity: fieldType,
     reservable: fieldType,
-    section: fieldType,
   };
   return depth > 0
     ? {

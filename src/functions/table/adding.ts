@@ -1,4 +1,4 @@
-import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
+import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
 import { tables, tableSelectable, Table, RTable } from "../../schemas/table.ts";
 import { throwError } from "../../utils/throwError.ts";
@@ -12,6 +12,7 @@ const check = v.compile({
       set: {
         type: "object",
         props: {
+          tableNo: { type: "number", optional: true },
           tableCapacity: { type: "number" },
           reservable: { type: "boolean" },
         },
@@ -27,6 +28,7 @@ const check = v.compile({
 
 interface addingTableDetails {
   set: {
+    tableNo?: number;
     tableCapacity: number;
     reservable: boolean;
   };
@@ -39,10 +41,11 @@ export const addingTable: AddingTable = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { tableCapacity, reservable },
+    set: { tableNo, tableCapacity, reservable },
     get,
   } = details;
   const createdTable = await tables.insertOne({
+    tableNo,
     tableCapacity,
     reservable,
   });

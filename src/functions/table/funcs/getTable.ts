@@ -2,12 +2,11 @@ import { Bson } from "../../../../db.ts";
 import { tables, Table, RTable } from "../../../schemas/table.ts";
 import { throwError } from "../../../utils/mod.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getCenters } from "../../center/funcs/getCenters.ts";
 
 type GetTableInput = { _id: Bson.ObjectID; get: RTable };
 type GetTableFn = ({ _id, get }: GetTableInput) => Promise<Table>;
 export const getTable: GetTableFn = async ({ _id, get }) => {
-  const projection = makeProjections(get, [], ["center"]);
+  const projection = makeProjections(get, [], ["centers"]);
   console.log("                      ");
   console.log("++++++++++++++++++++++");
   console.log("                      ");
@@ -19,16 +18,11 @@ export const getTable: GetTableFn = async ({ _id, get }) => {
   console.log("                      ");
   console.log("----------------------");
   console.log("                      ");
-  const foundedCenter = await tables.findOne({ _id }, { projection });
+  const foundedTable = await tables.findOne({ _id }, { projection });
   const doRelation = async (table: Table, get: RTable) => {
-    if (get.centers)
-      tables.center = await getCenters({
-        filter: { table: table._id },
-        getObj: get.centers,
-      });
     return table;
   };
-  return foundedCenter
-    ? await doRelation(foundedCenter, get)
+  return foundedTable
+    ? await doRelation(foundedTable, get)
     : throwError("can not find table");
 };

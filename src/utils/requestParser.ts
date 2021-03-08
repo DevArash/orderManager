@@ -17,7 +17,7 @@ const check = v.compile({
     props: {
       model: {
         type: "enum",
-        values: ["Testing", "Center", "Menu"],
+        values: ["Testing", "Center", "Menu", "Table"],
       },
     },
   },

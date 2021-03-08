@@ -1,6 +1,6 @@
 export interface body {
   wants: {
-    model: "Testing" | "Center" | "Menu";
+    model: "Testing" | "Center" | "Menu" | "Table";
 
     doit: string;
   };

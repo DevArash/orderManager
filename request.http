@@ -3,24 +3,12 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Center",
+      "model": "Table",
       "doit": "Adding"
   },
   "details":{
-"set":{
-      "name":"Center Name",
-      "owner":{
-        "name": "owner Name",
-        "phone": 123
-      },
-      "address":{
-        "state":"hamedan",
-        "city":"hamedan",
-        "mainStreet":"mahdieh",
-        "houseNumber":1,
-        "postalCode":1
-      },
-      "activeHours":[6,10,"morning"]
+  "set":{
+      
     },
     "get":{}
   }
