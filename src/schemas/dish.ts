@@ -2,6 +2,8 @@ import db from "../../db.ts";
 import { Recipe } from "./recipe.ts";
 import { Rating } from "./rating.ts";
 import { Base } from "./utils/bases/base.ts";
+import { fieldType } from "../schemas/utils/fieldType.ts";
+import { RType } from "./utils/rType.ts";
 
 export interface PuDish extends Base {
   name: string;
@@ -16,3 +18,31 @@ export interface PuDish extends Base {
 export interface Dish extends PuDish {}
 
 export const centers = db.collection<Dish>("Dishes");
+
+export interface RDish {
+  _id: RType;
+  name: RType;
+  price: RType;
+  discont?: RType;
+  recepies?: RType;
+  photos: RType;
+  dishRating: RType;
+  calorie?: RType;
+}
+
+export const dishSelectable = (depth: number = 4) => {
+  depth--;
+  const returnObj = {
+    _id: fieldType,
+    name: fieldType,
+    price: fieldType,
+    discont: fieldType,
+    recepies: fieldType,
+    photos: fieldType,
+    dishRating: fieldType,
+    calorie: fieldType,
+  };
+  returnObj;
+};
+
+export const dishes = db.collection<Dish>("Dishes");
