@@ -1,12 +1,6 @@
 import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
-import {
-  dishes,
-  dishSelectable,
-  Dish,
-  RDish,
-  centers,
-} from "../../schemas/dish.ts";
+import { dishes, dishSelectable, Dish, RDish } from "../../schemas/dish.ts";
 import { Rating } from "../../schemas/rating.ts";
 import { Recipe } from "../../schemas/recipe.ts";
 import { throwError } from "../../utils/throwError.ts";
