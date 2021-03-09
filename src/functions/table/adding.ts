@@ -1,8 +1,8 @@
 import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
-import { tables, tableSelectable, Table, RTable } from "../../schemas/table.ts";
-import { throwError } from "../../utils/throwError.ts";
 import { getTable } from "./funcs/getTable.ts";
+import { throwError } from "../../utils/throwError.ts";
+import { tables, tableSelectable, Table, RTable } from "../../schemas/table.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -16,11 +16,11 @@ const check = v.compile({
           tableCapacity: { type: "number" },
           reservable: { type: "boolean" },
         },
-        get: {
+        /*get: {  ----> When Comment Work Else Dont Work
           type: "object",
           optional: true,
           props: tableSelectable(1),
-        },
+        },*/
       },
     },
   },

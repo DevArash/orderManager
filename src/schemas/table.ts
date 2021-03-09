@@ -1,7 +1,7 @@
 import db from "../../db.ts";
 import { RType } from "../schemas/utils/rType.ts";
-import { Base, RBase } from "../schemas/utils/bases/base.ts";
 import { fieldType } from "../schemas/utils/fieldType.ts";
+import { Base, RBase } from "../schemas/utils/bases/base.ts";
 import { Center, PuCenter, centerSelectable, RCenter } from "./center.ts";
 
 export interface PuTable extends Base {

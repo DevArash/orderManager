@@ -8,8 +8,16 @@ content-type: application/json
   },
   "details":{
   "set":{
-      
+      "tableNo": 1,
+      "tableCapacity": 4,
+      "reservable": true
     },
     "get":{}
   }
 }
+
+
+//  Testing Func
+//  Center
+//  Menu
+//  Table
