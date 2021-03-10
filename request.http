@@ -3,21 +3,19 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Table",
+      "model": "Dish",
       "doit": "Adding"
   },
   "details":{
   "set":{
-      "tableNo": 1,
-      "tableCapacity": 4,
-      "reservable": true
-    },
-    "get":{}
+    "name": "water",
+    "price": 5000,
+    "photo":["photo1", "photo2"],
+    "dishRating": {
+      "rateNumber": "Five",
+      "rateDescription": "Best"
+    }
+  },
+  "get":{}
   }
 }
-
-
-//  Testing Func
-//  Center
-//  Menu
-//  Table

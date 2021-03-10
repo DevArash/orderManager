@@ -27,10 +27,10 @@ for await (const req of server) {
       return {
         ["Testing"]: async () => await console.log("Testing works"),
         ["Center"]: async () => await centerFns(doit as CenterDoit, details),
-        ["Menu"]: async () => await menuFns(doit as MenuDoit, details),
         ["Table"]: async () => await tableFns(doit as TableDoit, details),
-        ["Dish"]: async () => await dishFns(doit as DishDoit, details),
+        ["Menu"]: async () => await menuFns(doit as MenuDoit, details),
         ["Order"]: async () => await orderFns(doit as OrderDoit, details),
+        ["Dish"]: async () => await dishFns(doit as DishDoit, details),
       }[model]();
     };
     req.respond({

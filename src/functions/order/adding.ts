@@ -20,22 +20,24 @@ const check = v.compile({
       set: {
         type: "object",
         props: {
-          orderRating: { type: "string" },
-          orderStatus: {
+          orderRating: {
             type: "object",
             props: {
-              InPreparation: { type: "string" },
-              Delivered: { type: "string" },
-              Canceled: { type: "string" },
+              rateNumber: {
+                type: "enum",
+                values: ["One", "Tow", "Three", "Four", "Five"],
+              },
+              rateDescription: { type: "string" },
             },
+          },
+          orderStatus: {
+            type: "string",
+            values: ["InPreparation", "Delivered", "Canceled"],
           },
           totalPrice: { type: "number" },
           orderType: {
-            type: "object",
-            props: {
-              Table: { type: "string" },
-              Takeout: { type: "string" },
-            },
+            type: "enum",
+            values: ["Table", "Takeout"],
           },
           preprationTime: { type: "date", optional: true },
           customerPhoneNumber: { type: "number" },
