@@ -1,5 +1,5 @@
-import db from "../../../db.ts";
-import { Base, fieldType, RType } from "./../utils/mod.ts";
+import db from "../../db.ts";
+import { Base, fieldType, RType } from "./utils/mod.ts";
 import { PuCity, citySelectable, RCity } from "./city.ts";
 import { PuState, stateSelectable, RState } from "./state.ts";
 import { PuCountry, countrySelectable, RCountry } from "./country.ts";

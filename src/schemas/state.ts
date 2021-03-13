@@ -1,6 +1,6 @@
-import db from "../../../db.ts";
+import db from "../../db.ts";
 import { RCity, citySelectable, PuCity } from "./city.ts";
-import { Base, fieldType, RType } from "./../utils/mod.ts";
+import { Base, fieldType, RType } from "./utils/mod.ts";
 import { PuCountry, RCountry, countrySelectable } from "./country.ts";
 
 export interface PuState extends Base {

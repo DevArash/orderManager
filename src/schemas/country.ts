@@ -1,6 +1,6 @@
-import db from "../../../db.ts";
+import db from "../../db.ts";
 import { Parish } from "./parish.ts";
-import { Base, fieldType, RType } from "../utils/mod.ts";
+import { Base, fieldType, RType } from "./utils/mod.ts";
 import { PuCity, citySelectable, RCity } from "./city.ts";
 import { PuState, stateSelectable, RState } from "./state.ts";
 
