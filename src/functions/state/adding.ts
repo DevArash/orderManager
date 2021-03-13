@@ -32,7 +32,7 @@ interface addingStateDetails {
 
 type AddingState = (details: addingStateDetails) => Promise<Partial<State>>;
 
-export const addingCountry: AddingState = async (details) => {
+export const addingState: AddingState = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {

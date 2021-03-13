@@ -24,7 +24,7 @@ export interface RState {
   _id: RType;
   name: RType;
   logo: RType;
-  country?: RCountry;
+  countries?: RCountry;
   cities?: RCity;
 }
 

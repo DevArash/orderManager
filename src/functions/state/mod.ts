@@ -15,7 +15,7 @@ export type StateDoit = "adding";
 
 type StateFns = (doit: StateDoit, details: any) => Promise<Partial<State>>;
 
-export const countryFns: StateFns = (doit, details) => {
+export const stateFns: StateFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {

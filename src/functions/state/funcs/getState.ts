@@ -1,14 +1,14 @@
 import { Bson } from "../../../../db.ts";
 import { throwError } from "../../../utils/mod.ts";
 import { getCities } from "../../city/funcs/mod.ts";
-import { getParish } from "../../state/funcs/mod.ts";
-import { makeProjections } from "../../../utils/makeProjections.ts";
+import { getCountries } from "../../country/funcs/getCountries.ts";
 import { states, State, RState } from "../../../schemas/state.ts";
+import { makeProjections } from "../../../utils/makeProjections.ts";
 
 type GetStateInput = { _id: Bson.ObjectID; get: RState };
 type GetStateFn = ({ _id, get }: GetStateInput) => Promise<State>;
 export const getState: GetStateFn = async ({ _id, get }) => {
-  const projection = makeProjections(get, [], ["states", "cities"]);
+  const projection = makeProjections(get, [], ["countries", "cities"]);
   console.log("                      ");
   console.log("++++++++++++++++++++++");
   console.log("                      ");
@@ -27,10 +27,10 @@ export const getState: GetStateFn = async ({ _id, get }) => {
         filter: { state: state._id },
         getObj: get.cities,
       });
-    if (get.parish)
-      state.states = await getParish({
+    if (get.countries)
+      state.cities = await getCountries({
         filter: { state: state._id },
-        getObj: get.parishes,
+        getObj: get.countries,
       });
     return state;
   };

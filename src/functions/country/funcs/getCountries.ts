@@ -1,9 +1,8 @@
 import { Bson } from "../../../../db.ts";
-import { countries, Country, RCountry } from "../../../schemas/mod.ts";
 import { makeLookUp } from "../../../utils/mod.ts";
-import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getCities } from "../../city/funcs/mod.ts";
 import { getStates } from "../../state/funcs/mod.ts";
+import { makeProjections } from "../../../utils/makeProjections.ts";
+import { countries, Country, RCountry } from "../../../schemas/mod.ts";
 
 type GetCountriesInput = { filter: Bson.Document; getObj: RCountry };
 type GetCountriesFn = ({
