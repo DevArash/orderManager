@@ -14,9 +14,9 @@ const check = v.compile({
 
 export type UserDoit = "signing" | "login";
 
-type UsrFns = (doit: UserDoit, details: any) => Promise<Partial<User>>;
+type UserFns = (doit: UserDoit, details: any) => Promise<Partial<User>>;
 
-export const usrFns: UsrFns = (doit, details) => {
+export const userFns: UserFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {

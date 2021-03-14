@@ -7,11 +7,11 @@ const v = new FastestValidator();
 const check = v.compile({
   doit: {
     type: "enum",
-    values: ["adding"],
+    values: ["Adding"],
   },
 });
 
-export type CountryDoit = "adding";
+export type CountryDoit = "Adding";
 
 type CountryFns = (
   doit: CountryDoit,
@@ -22,7 +22,7 @@ export const countryFns: CountryFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {
-        ["adding"]: async () => await addingCountry(details),
+        ["Adding"]: async () => await addingCountry(details),
       }[doit]()
     : throwError(checkDoit[0].message);
 };

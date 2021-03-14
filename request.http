@@ -3,18 +3,12 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Dish",
+      "model": "Parish",
       "doit": "Adding"
   },
   "details":{
   "set":{
-    "name": "water",
-    "price": 5000,
-    "photo":["photo1", "photo2"],
-    "dishRating": {
-      "rateNumber": "Five",
-      "rateDescription": "Best"
-    }
+    "name": "mahdieh"
   },
   "get":{}
   }

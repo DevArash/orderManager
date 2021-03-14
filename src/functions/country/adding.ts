@@ -19,7 +19,7 @@ const check = v.compile({
         props: {
           name: { type: "string" },
           abbr: { type: "string" },
-          logo: { type: "file" },
+          logo: { type: "string" },
         },
       },
       get: {
@@ -32,7 +32,7 @@ const check = v.compile({
 });
 
 interface addingCountryDetails {
-  set: { name: string; abbr: string; logo: File };
+  set: { name: string; abbr: string; logo: string };
   get: RCountry;
 }
 

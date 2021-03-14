@@ -13,7 +13,7 @@ const check = v.compile({
         type: "object",
         props: {
           name: { type: "string" },
-          logo: { type: "file" },
+          logo: { type: "string" },
         },
       },
       get: {
@@ -26,7 +26,7 @@ const check = v.compile({
 });
 
 interface addingStateDetails {
-  set: { name: string; logo: File };
+  set: { name: string; logo: string };
   get: RState;
 }
 

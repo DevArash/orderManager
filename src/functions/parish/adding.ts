@@ -7,7 +7,7 @@ import {
   RParish,
 } from "../../schemas/parish.ts";
 import { throwError } from "../../utils/mod.ts";
-import { getCountry } from "./funcs/mod.ts";
+import { getParish } from "./funcs/getParish.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -18,8 +18,6 @@ const check = v.compile({
         type: "object",
         props: {
           name: { type: "string" },
-          abbr: { type: "string" },
-          logo: { type: "file" },
         },
       },
       get: {
@@ -32,7 +30,7 @@ const check = v.compile({
 });
 
 interface addingParishDetails {
-  set: { name: string; abbr: string; logo: File };
+  set: { name: string };
   get: RParish;
 }
 
@@ -42,14 +40,12 @@ export const addingParish: AddingParish = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, abbr, logo },
+    set: { name },
     get,
   } = details;
   const createdParish = await parishes.insertOne({
     name,
-    abbr,
-    logo,
   });
   const ob = new Bson.ObjectID(createdParish);
-  return get ? getCountry({ _id: ob, get }) : { _id: ob };
+  return get ? getParish({ _id: ob, get }) : { _id: ob };
 };

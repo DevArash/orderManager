@@ -7,11 +7,11 @@ const v = new FastestValidator();
 const check = v.compile({
   doit: {
     type: "enum",
-    values: ["adding"],
+    values: ["Adding"],
   },
 });
 
-export type ParishDoit = "adding";
+export type ParishDoit = "Adding";
 
 type ParishFns = (doit: ParishDoit, details: any) => Promise<Partial<Parish>>;
 
@@ -19,7 +19,7 @@ export const parishFns: ParishFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {
-        ["adding"]: async () => await addingParish(details),
+        ["Adding"]: async () => await addingParish(details),
       }[doit]()
     : throwError(checkDoit[0].message);
 };

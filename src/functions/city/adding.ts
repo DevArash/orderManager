@@ -1,6 +1,6 @@
 import { Bson } from "../../../db.ts";
-import { getState } from "./funcs/mod.ts";
 import { throwError } from "../../utils/mod.ts";
+import { getCity } from "./funcs/mod.ts";
 import { cities, City, citySelectable, RCity } from "../../schemas/city.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
@@ -13,7 +13,6 @@ const check = v.compile({
         type: "object",
         props: {
           name: { type: "string" },
-          logo: { type: "file" },
         },
       },
       get: {
@@ -26,7 +25,7 @@ const check = v.compile({
 });
 
 interface addingCityDetails {
-  set: { name: string; logo: File };
+  set: { name: string };
   get: RCity;
 }
 
@@ -36,13 +35,12 @@ export const addingCity: AddingCity = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, logo },
+    set: { name },
     get,
   } = details;
   const createdState = await cities.insertOne({
     name,
-    logo,
   });
   const ob = new Bson.ObjectID(createdState);
-  return get ? getState({ _id: ob, get }) : { _id: ob };
+  return get ? getCity({ _id: ob, get }) : { _id: ob };
 };

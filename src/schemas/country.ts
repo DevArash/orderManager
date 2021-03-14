@@ -7,7 +7,7 @@ import { PuState, stateSelectable, RState } from "./state.ts";
 export interface PuCountry extends Base {
   name: string;
   abbr: string;
-  logo: File;
+  logo: string;
 }
 
 export interface EmCountry {
