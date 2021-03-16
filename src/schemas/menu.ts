@@ -1,8 +1,6 @@
 import db from "../../db.ts";
 import { Dish } from "./dish.ts";
-import { RType } from "./utils/rType.ts";
-import { Base } from "./utils/bases/base.ts";
-import { fieldType } from "./utils/fieldType.ts";
+import { Base, RType, fieldType } from "./mod.ts";
 
 export interface MenuCategory {
   title: string;
@@ -26,7 +24,7 @@ export interface RMenu {
   subHeading: RType;
   icon: RType;
   description: RType;
-  menuType: RType;
+  menuCategory: RType;
 }
 
 export const menuSelectable = (depth: number = 4) => {
@@ -37,7 +35,7 @@ export const menuSelectable = (depth: number = 4) => {
     subHeading: fieldType,
     icon: fieldType,
     description: fieldType,
-    menuType: fieldType,
+    menuCategory: fieldType,
   };
 };
 

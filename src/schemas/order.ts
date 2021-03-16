@@ -1,9 +1,7 @@
+import db from "../../db.ts";
 import { Dish, dishSelectable, RDish } from "./dish.ts";
 import { Rating } from "./rating.ts";
-import db, { Bson } from "../../db.ts";
-import { RType } from "./utils/rType.ts";
-import { fieldType } from "./utils/fieldType.ts";
-import { Base } from "../schemas/utils/bases/base.ts";
+import { Base, RType, fieldType } from "./mod.ts";
 
 export enum OrderStatus {
   InPreparation = "INPREPARATION",

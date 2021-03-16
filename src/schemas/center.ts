@@ -1,11 +1,10 @@
 import db from "../../db.ts";
-import { PuOrder } from "./order.ts";
-import { RType } from "./utils/rType.ts";
-import { menuSelectable, PuMenu, RMenu } from "./menu.ts";
-import { PuTable, RTable, tableSelectable } from "./table.ts";
-import { Base } from "../schemas/utils/bases/base.ts";
-import { fieldType } from "../schemas/utils/fieldType.ts";
-
+import { PuOrder } from "./mod.ts";
+import { RType } from "./mod.ts";
+import { menuSelectable, PuMenu, RMenu } from "./mod.ts";
+import { PuTable, RTable, tableSelectable } from "./mod.ts";
+import { Base } from "./mod.ts";
+import { fieldType } from "./mod.ts";
 export interface Certificate {
   title: string;
   issuedAt: Date;
@@ -21,7 +20,7 @@ interface Owner {
 interface Address {
   state: string;
   city: string;
-  mainStreet: string; //TODO: CHANGE NAME
+  mainStreet: string;
   houseNumber: number;
   postalCode: number;
 }

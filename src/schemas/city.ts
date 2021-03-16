@@ -1,11 +1,17 @@
 import db from "../../db.ts";
-import { Base, fieldType, RType } from "./utils/mod.ts";
+import { Base, fieldType, RType } from "./mod.ts";
+import { PuUser, RUser, userSelectable } from "./mod.ts";
 import { PuState, RState, stateSelectable } from "./state.ts";
-import { countrySelectable, PuCountry, RCountry } from "./country.ts";
+import { PuCenter, RCenter, centerSelectable } from "./mod.ts";
 import { PuParish, RParish, parishSelectable } from "./parish.ts";
+import { countrySelectable, PuCountry, RCountry } from "./mod.ts";
 
 export interface PuCity extends Base {
   name: string;
+  geometries: {
+    type: "polygon";
+    cordinate: [number, number][];
+  };
 }
 
 export interface EmCity {
@@ -13,12 +19,14 @@ export interface EmCity {
   country: PuCountry;
 }
 
-export interface InCity {
+export interface InRelCity {
   state: PuState;
   country: PuCountry;
 }
-export interface OutCity {
+export interface OutRelCity {
   parish: PuParish;
+  center: PuCenter;
+  user: PuUser;
 }
 export interface City extends EmCity, PuCity {}
 
@@ -28,6 +36,8 @@ export interface RCity {
   states: RState;
   parishes: RParish;
   countries: RCountry;
+  centers: RCenter;
+  users: RUser;
 }
 
 export const citySelectable: any = (depth: number = 4) => {
@@ -52,6 +62,16 @@ export const citySelectable: any = (depth: number = 4) => {
           type: "object",
           optional: true,
           props: countrySelectable(depth),
+        },
+        center: {
+          type: "object",
+          optional: true,
+          props: centerSelectable(depth),
+        },
+        user: {
+          type: "object",
+          optional: true,
+          props: userSelectable(depth),
         },
       }
     : returnObj;

@@ -1,8 +1,6 @@
 import db from "../../db.ts";
-import { RType } from "../schemas/utils/rType.ts";
-import { fieldType } from "../schemas/utils/fieldType.ts";
-import { Base, RBase } from "../schemas/utils/bases/base.ts";
-import { Center, PuCenter, centerSelectable, RCenter } from "./center.ts";
+import { Base, RType, fieldType } from "./mod.ts";
+import { PuCenter, centerSelectable, RCenter } from "./mod.ts";
 
 export interface PuTable extends Base {
   tableNo?: number;
@@ -14,13 +12,11 @@ export interface EmTable {
   center: PuCenter;
 }
 
-export interface InRelTable {
-  center: Center;
-}
+// export interface InRelTable {}
 
-export interface OutRelTable {}
+// export interface OutRelTable {}
 
-export interface RTable extends RBase {
+export interface RTable {
   tableNo: RType;
   tableCapacity: RType;
   reservable: RType;

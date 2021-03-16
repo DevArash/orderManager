@@ -3,9 +3,15 @@ import { Base, fieldType, RType } from "./utils/mod.ts";
 import { PuCity, citySelectable, RCity } from "./city.ts";
 import { PuState, stateSelectable, RState } from "./state.ts";
 import { PuCountry, countrySelectable, RCountry } from "./country.ts";
+import { PuUser, RUser, userSelectable } from "./user.ts";
+import { PuCenter, RCenter, centerSelectable } from "./center.ts";
 
 export interface PuParish extends Base {
   name: string;
+  geometries: {
+    type: "polygon";
+    cordinate: [number, number][];
+  };
 }
 
 export interface EmParish {
@@ -14,10 +20,11 @@ export interface EmParish {
   country: PuCountry;
 }
 
-export interface InParish {
-  city: PuCity;
-  state: PuState;
-  country: PuCountry;
+export interface InRelParish {}
+
+export interface OutRelCity {
+  center: PuCenter;
+  user: PuUser;
 }
 
 export interface Parish extends EmParish, PuParish {}
@@ -28,9 +35,11 @@ export interface RParish {
   city: RCity;
   state: RState;
   country: RCountry;
+  centers: RCenter;
+  users: RUser;
 }
 
-export const parishSelectable = (depth: number = 4) => {
+export const parishSelectable: any = (depth: number = 4) => {
   depth--;
   const returnObj = {
     name: fieldType,
@@ -52,6 +61,16 @@ export const parishSelectable = (depth: number = 4) => {
           type: "object",
           optional: true,
           props: countrySelectable(depth),
+        },
+        center: {
+          type: "object",
+          optional: true,
+          props: centerSelectable(depth),
+        },
+        user: {
+          type: "object",
+          optional: true,
+          props: userSelectable(depth),
         },
       }
     : returnObj;
