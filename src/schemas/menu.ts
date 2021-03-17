@@ -1,5 +1,5 @@
 import db from "../../db.ts";
-import { Dish } from "./dish.ts";
+import { Dish } from "./mod.ts";
 import { Base, RType, fieldType } from "./mod.ts";
 
 export interface MenuCategory {

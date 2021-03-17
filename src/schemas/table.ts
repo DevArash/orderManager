@@ -1,5 +1,5 @@
 import db from "../../db.ts";
-import { Base, RType, fieldType } from "./mod.ts";
+import { Base, RBase, RType, fieldType } from "./mod.ts";
 import { PuCenter, centerSelectable, RCenter } from "./mod.ts";
 
 export interface PuTable extends Base {
@@ -16,7 +16,8 @@ export interface EmTable {
 
 // export interface OutRelTable {}
 
-export interface RTable {
+export interface RTable extends RBase {
+  _id: RType;
   tableNo: RType;
   tableCapacity: RType;
   reservable: RType;
@@ -28,7 +29,7 @@ export interface Table extends PuTable, EmTable {}
 export const tableSelectable = (depth: number = 4): any => {
   depth--;
   const returnObj = {
-    ...tableSelectable(),
+    _id: fieldType,
     tableNo: fieldType,
     tableCapacity: fieldType,
     reservable: fieldType,

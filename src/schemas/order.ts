@@ -1,5 +1,5 @@
 import db from "../../db.ts";
-import { Dish, dishSelectable, RDish } from "./dish.ts";
+import { Dish, dishSelectable, RDish } from "./mod.ts";
 import { Rating } from "./rating.ts";
 import { Base, RType, fieldType } from "./mod.ts";
 

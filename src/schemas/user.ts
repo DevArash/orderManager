@@ -1,9 +1,9 @@
 import db from "../../db.ts";
-import { City, RCity, citySelectable } from "./city.ts";
-import { State, RState, stateSelectable } from "./state.ts";
-import { Base, fieldType, RType } from "./utils/mod.ts";
-import { Parish, RParish, parishSelectable } from "./parish.ts";
-import { Country, RCountry, countrySelectable } from "./country.ts";
+import { Base, fieldType, RType } from "./mod.ts";
+import { City, RCity, citySelectable } from "./mod.ts";
+import { State, RState, stateSelectable } from "./mod.ts";
+import { Parish, RParish, parishSelectable } from "./mod.ts";
+import { Country, RCountry, countrySelectable } from "./mod.ts";
 
 export enum Gender {
   Male = "Male",

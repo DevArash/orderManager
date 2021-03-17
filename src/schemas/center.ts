@@ -1,10 +1,8 @@
 import db from "../../db.ts";
 import { PuOrder } from "./mod.ts";
-import { RType } from "./mod.ts";
+import { Base, RType, fieldType } from "./mod.ts";
 import { menuSelectable, PuMenu, RMenu } from "./mod.ts";
 import { PuTable, RTable, tableSelectable } from "./mod.ts";
-import { Base } from "./mod.ts";
-import { fieldType } from "./mod.ts";
 export interface Certificate {
   title: string;
   issuedAt: Date;
@@ -67,7 +65,7 @@ export interface RCenter {
   tables: RTable;
 }
 
-export const centerSelectable = (depth: number = 4) => {
+export const centerSelectable = (depth: number = 4): any => {
   depth--;
   const returnObj = {
     _id: fieldType,

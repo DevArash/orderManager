@@ -14,8 +14,6 @@ export interface PuDish extends Base {
 
 export interface Dish extends PuDish {}
 
-export const centers = db.collection<Dish>("Dishes");
-
 export interface RDish {
   _id: RType;
   name: RType;

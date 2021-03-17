@@ -16,11 +16,12 @@ const check = v.compile({
           tableCapacity: { type: "number" },
           reservable: { type: "boolean" },
         },
-        /*get: {  ----> When Comment Work Else Dont Work
+        /*         get: {
+          //When Comment Work
           type: "object",
           optional: true,
           props: tableSelectable(1),
-        },*/
+        }, */
       },
     },
   },

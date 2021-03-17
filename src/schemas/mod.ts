@@ -10,3 +10,7 @@ export * from "./order.ts";
 export * from "./recipe.ts";
 export * from "./table.ts";
 export * from "./user.ts";
+export * from "./city.ts";
+export * from "./state.ts";
+export * from "./parish.ts";
+export * from "./dish.ts";
