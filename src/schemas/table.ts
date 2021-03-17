@@ -1,6 +1,13 @@
 import db from "../../db.ts";
-import { Base, RBase, RType, fieldType } from "./mod.ts";
-import { PuCenter, centerSelectable, RCenter } from "./mod.ts";
+import {
+  Base,
+  RBase,
+  RType,
+  fieldType,
+  PuCenter,
+  centerSelectable,
+  RCenter,
+} from "./mod.ts";
 
 export interface PuTable extends Base {
   tableNo?: number;

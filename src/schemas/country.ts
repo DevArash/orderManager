@@ -1,11 +1,22 @@
 import db from "../../db.ts";
-import { Parish } from "./mod.ts";
-import { Base, fieldType, RType } from "./mod.ts";
-import { PuCity, citySelectable, RCity } from "./mod.ts";
-import { PuState, stateSelectable, RState } from "./mod.ts";
-import { PuCenter, RCenter, centerSelectable } from "./mod.ts";
-import { PuUser, RUser, userSelectable } from "./mod.ts";
-
+import {
+  Base,
+  fieldType,
+  RType,
+  Parish,
+  PuCity,
+  citySelectable,
+  RCity,
+  PuState,
+  stateSelectable,
+  RState,
+  PuCenter,
+  RCenter,
+  centerSelectable,
+  PuUser,
+  RUser,
+  userSelectable,
+} from "./mod.ts";
 export interface PuCountry extends Base {
   name: string;
   abbr: string;

@@ -1,7 +1,6 @@
 import db from "../../db.ts";
-import { Recipe } from "./mod.ts";
 import { Rating } from "./rating.ts";
-import { Base, fieldType, RType } from "./mod.ts";
+import { Base, fieldType, RType, Recipe } from "./mod.ts";
 export interface PuDish extends Base {
   name: string;
   price: number;

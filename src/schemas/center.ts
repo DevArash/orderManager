@@ -1,8 +1,17 @@
 import db from "../../db.ts";
-import { PuOrder } from "./mod.ts";
-import { Base, RType, fieldType } from "./mod.ts";
-import { menuSelectable, PuMenu, RMenu } from "./mod.ts";
-import { PuTable, RTable, tableSelectable } from "./mod.ts";
+import {
+  Base,
+  RType,
+  fieldType,
+  PuOrder,
+  PuMenu,
+  RMenu,
+  menuSelectable,
+  PuTable,
+  RTable,
+  tableSelectable,
+} from "./mod.ts";
+
 export interface Certificate {
   title: string;
   issuedAt: Date;
