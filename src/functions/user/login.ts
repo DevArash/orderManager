@@ -1,6 +1,6 @@
 import { redis } from "../../../redis.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { RUser, User, users } from "../../schemas/user.ts";
+import { throwError } from "../../utils/mod.ts";
+import { RUser, User, users } from "../../schemas/mod.ts";
 import { create, Payload } from "https://deno.land/x/djwt@v1.9/mod.ts";
 
 export const key = "your-secret";

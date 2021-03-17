@@ -1,10 +1,10 @@
 import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
-import { dishes, dishSelectable, Dish, RDish } from "../../schemas/dish.ts";
+import { dishes, dishSelectable, Dish, RDish } from "../../schemas/mod.ts";
 import { Rating } from "../../schemas/rating.ts";
-import { Recipe } from "../../schemas/recipe.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { getDish } from "./sharedFuncs/getDish.ts";
+import { Recipe } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
+import { getDish } from "../mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

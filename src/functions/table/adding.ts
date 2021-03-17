@@ -1,8 +1,8 @@
 import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
-import { getTable } from "./sharedFuncs/getTable.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { tables, tableSelectable, Table, RTable } from "../../schemas/table.ts";
+import { getTable } from "../mod.ts";
+import { throwError } from "../../utils/mod.ts";
+import { tables, tableSelectable, Table, RTable } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

@@ -1,6 +1,6 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Table } from "../../schemas/table.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Table } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import { addingTable } from "./adding.ts";
 
 const v = new FastestValidator();

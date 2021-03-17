@@ -7,10 +7,10 @@ import {
   ROrder,
   OrderStatus,
   OrderType,
-} from "../../schemas/order.ts";
+} from "../../schemas/mod.ts";
 import { Rating } from "../../schemas/rating.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { getOrder } from "./sharedFuncs/getOrder.ts";
+import { throwError } from "../../utils/mod.ts";
+import { getOrder } from "../mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

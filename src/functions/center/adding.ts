@@ -6,9 +6,9 @@ import {
   Center,
   RCenter,
   Certificate,
-} from "../../schemas/center.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { getCenter } from "./sharedFuncs/getCenter.ts";
+} from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
+import { getCenter } from "../mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

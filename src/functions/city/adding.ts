@@ -1,7 +1,7 @@
 import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
 import { getCity } from "./sharedFuncs/mod.ts";
-import { cities, City, citySelectable, RCity } from "../../schemas/city.ts";
+import { cities, City, citySelectable, RCity } from "../../schemas/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
 const v = new FastestValidator();

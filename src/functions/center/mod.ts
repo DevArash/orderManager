@@ -1,6 +1,6 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Center } from "../../schemas/center.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Center } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import { addingCenter } from "./adding.ts";
 
 const v = new FastestValidator();

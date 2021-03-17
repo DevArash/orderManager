@@ -1,6 +1,6 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Menu } from "../../schemas/menu.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Menu } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import { addingMenu } from "./adding.ts";
 
 const v = new FastestValidator();

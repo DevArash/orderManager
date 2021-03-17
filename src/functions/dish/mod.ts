@@ -1,6 +1,6 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Dish } from "../../schemas/dish.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Dish } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import { addingDish } from "./adding.ts";
 
 const v = new FastestValidator();

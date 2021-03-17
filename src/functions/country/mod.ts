@@ -1,6 +1,6 @@
 import { addingCountry } from "./adding.ts";
-import { Country } from "../../schemas/country.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Country } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
 const v = new FastestValidator();

@@ -1,8 +1,8 @@
 import { Bson } from "../../../db.ts";
-import { getState } from "./sharedFuncs/mod.ts";
+import { getState } from "../mod.ts";
 import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { states, State, stateSelectable, RState } from "../../schemas/state.ts";
+import { states, State, stateSelectable, RState } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

@@ -1,7 +1,7 @@
 import { login } from "./login.ts";
 import { signing } from "./signing.ts";
-import { User } from "../../schemas/user.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { User } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
 const v = new FastestValidator();

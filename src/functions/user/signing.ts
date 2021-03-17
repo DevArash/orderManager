@@ -1,6 +1,6 @@
 import { redis } from "../../../redis.ts";
-import type { User, RUser } from "../../schemas/user.ts";
-import { users, Level, userSelectable } from "../../schemas/user.ts";
+import type { User, RUser } from "../../schemas/mod.ts";
+import { users, Level, userSelectable } from "../../schemas/mod.ts";
 import { createVerificationCode, throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 

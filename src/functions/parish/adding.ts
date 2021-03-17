@@ -5,9 +5,9 @@ import {
   Parish,
   parishSelectable,
   RParish,
-} from "../../schemas/parish.ts";
+} from "../../schemas/mod.ts";
 import { throwError } from "../../utils/mod.ts";
-import { getParish } from "./sharedFuncs/getParish.ts";
+import { getParish } from "../mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

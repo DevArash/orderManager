@@ -1,6 +1,6 @@
 import { addingState } from "./adding.ts";
-import { State } from "../../schemas/state.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { State } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
 const v = new FastestValidator();

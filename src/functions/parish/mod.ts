@@ -1,6 +1,6 @@
 import { addingParish } from "./adding.ts";
-import { Parish } from "../../schemas/parish.ts";
-import { throwError } from "../../utils/throwError.ts";
+import { Parish } from "../../schemas/mod.ts";
+import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 
 const v = new FastestValidator();

@@ -7,8 +7,8 @@ import {
   RMenu,
   MenuCategory,
 } from "../../schemas/menu.ts";
-import { throwError } from "../../utils/throwError.ts";
-import { getMenu } from "./sharedFuncs/getMenu.ts";
+import { throwError } from "../../utils/mod.ts";
+import { getMenu } from "../mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
