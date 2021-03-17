@@ -7,7 +7,7 @@ import {
   RParish,
 } from "../../schemas/parish.ts";
 import { throwError } from "../../utils/mod.ts";
-import { getParish } from "./funcs/getParish.ts";
+import { getParish } from "./sharedFuncs/getParish.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

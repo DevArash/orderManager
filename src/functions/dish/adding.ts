@@ -4,7 +4,7 @@ import { dishes, dishSelectable, Dish, RDish } from "../../schemas/dish.ts";
 import { Rating } from "../../schemas/rating.ts";
 import { Recipe } from "../../schemas/recipe.ts";
 import { throwError } from "../../utils/throwError.ts";
-import { getDish } from "./funcs/getDish.ts";
+import { getDish } from "./sharedFuncs/getDish.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

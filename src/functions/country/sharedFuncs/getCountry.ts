@@ -1,7 +1,7 @@
 import { Bson } from "../../../../db.ts";
 import { throwError } from "../../../utils/mod.ts";
-import { getCities } from "../../city/funcs/mod.ts";
-import { getStates } from "../../state/funcs/mod.ts";
+import { getCities } from "../../city/sharedFuncs/mod.ts";
+import { getStates } from "../../state/sharedFuncs/mod.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
 import { countries, Country, RCountry } from "../../../schemas/mod.ts";
 

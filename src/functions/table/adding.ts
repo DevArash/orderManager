@@ -1,6 +1,6 @@
 import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { Bson } from "../../../db.ts";
-import { getTable } from "./funcs/getTable.ts";
+import { getTable } from "./sharedFuncs/getTable.ts";
 import { throwError } from "../../utils/throwError.ts";
 import { tables, tableSelectable, Table, RTable } from "../../schemas/table.ts";
 

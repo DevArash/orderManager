@@ -2,7 +2,7 @@ import { Bson } from "../../../../db.ts";
 import { centers, Center, RCenter } from "../../../schemas/center.ts";
 import { makeLookUp } from "../../../utils/makeLookUp.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getTables } from "../../table/funcs/getTables.ts";
+import { getTables } from "../../table/sharedFuncs/getTables.ts";
 
 type GetCentersInput = { filter: Bson.Document; getObj: RCenter };
 type GetCentersFn = ({ filter, getObj }: GetCentersInput) => Promise<Center[]>;

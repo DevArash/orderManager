@@ -8,7 +8,7 @@ import {
   Certificate,
 } from "../../schemas/center.ts";
 import { throwError } from "../../utils/throwError.ts";
-import { getCenter } from "./funcs/getCenter.ts";
+import { getCenter } from "./sharedFuncs/getCenter.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

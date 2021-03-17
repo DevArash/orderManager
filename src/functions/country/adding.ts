@@ -7,7 +7,7 @@ import {
   RCountry,
 } from "../../schemas/country.ts";
 import { throwError } from "../../utils/mod.ts";
-import { getCountry } from "./funcs/mod.ts";
+import { getCountry } from "./sharedFuncs/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

@@ -8,7 +8,7 @@ import {
   MenuCategory,
 } from "../../schemas/menu.ts";
 import { throwError } from "../../utils/throwError.ts";
-import { getMenu } from "./funcs/getMenu.ts";
+import { getMenu } from "./sharedFuncs/getMenu.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

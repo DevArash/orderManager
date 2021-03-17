@@ -3,13 +3,6 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Parish",
-      "doit": "Adding"
-  },
-  "details":{
-  "set":{
-    "name": "mahdieh"
-  },
-  "get":{}
+      "model": "Center"
   }
 }

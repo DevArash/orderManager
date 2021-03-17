@@ -2,7 +2,7 @@ import { Bson } from "../../../../db.ts";
 import { tables, Table, RTable } from "../../../schemas/table.ts";
 import { makeLookUp } from "../../../utils/makeLookUp.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getCenters } from "../../center/funcs/mod.ts";
+import { getCenters } from "../../center/sharedFuncs/mod.ts";
 
 type GetTablesInput = { filter: Bson.Document; getObj: RTable };
 type GetTablesFn = ({ filter, getObj }: GetTablesInput) => Promise<Table[]>;

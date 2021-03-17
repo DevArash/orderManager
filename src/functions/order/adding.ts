@@ -10,7 +10,7 @@ import {
 } from "../../schemas/order.ts";
 import { Rating } from "../../schemas/rating.ts";
 import { throwError } from "../../utils/throwError.ts";
-import { getOrder } from "./funcs/getOrder.ts";
+import { getOrder } from "./sharedFuncs/getOrder.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

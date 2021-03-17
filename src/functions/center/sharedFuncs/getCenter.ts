@@ -2,8 +2,8 @@ import { Bson } from "../../../../db.ts";
 import { centers, Center, RCenter } from "../../../schemas/center.ts";
 import { throwError } from "../../../utils/mod.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getTables } from "../../table/funcs/getTables.ts";
-import { getMenus } from "../../menu/funcs/getMenus.ts";
+import { getTables } from "../../table/sharedFuncs/getTables.ts";
+import { getMenus } from "../../menu/sharedFuncs/getMenus.ts";
 
 type GetCenterInput = { _id: Bson.ObjectID; get: RCenter };
 type GetCenterFn = ({ _id, get }: GetCenterInput) => Promise<Center>;

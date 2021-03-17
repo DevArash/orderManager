@@ -1,6 +1,6 @@
 import { Bson } from "../../../../db.ts";
 import { makeLookUp } from "../../../utils/mod.ts";
-import { getCities } from "../../city/funcs/mod.ts";
+import { getCities } from "../../city/sharedFuncs/mod.ts";
 import { states, State, RState } from "../../../schemas/state.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
 

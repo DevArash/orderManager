@@ -2,7 +2,7 @@ import { Bson } from "../../../../db.ts";
 import { orders, Order, ROrder } from "../../../schemas/order.ts";
 import { makeLookUp } from "../../../utils/makeLookUp.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
-import { getDishes } from "../../dish/funcs/getDishes.ts";
+import { getDishes } from "../../dish/sharedFuncs/getDishes.ts";
 
 type GetOrdersInput = { filter: Bson.Document; getObj: ROrder };
 type GetOrdersFn = ({ filter, getObj }: GetOrdersInput) => Promise<Order[]>;
