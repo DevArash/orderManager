@@ -3,6 +3,13 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "Center"
+      "model": "City",
+      "doit":"Delete"
+  },
+  "details":{
+    "set":{
+      "_id":"604db2e7b794b41279fba06b"
+    },
+    "get":{}
   }
 }
