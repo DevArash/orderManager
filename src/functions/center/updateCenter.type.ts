@@ -1,0 +1,95 @@
+import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
+import {
+  Owner,
+  RCenter,
+  Address,
+  Certificate,
+  centerSelectable,
+} from "../../schemas/mod.ts";
+const v = new FastestValidator();
+
+/**
+ * this is validator for update center
+ * this validate the input object,
+ * has a tow part {set,get}
+ * object "get" for specify user what wants to return
+ * object "set" for validate input value
+ */
+
+export const checkUpdateCenter = v.compile({
+  details: {
+    type: "object",
+    props: {
+      set: {
+        type: "object",
+        strict: true,
+        props: {
+          /**
+           * The Values of the center that is going to be updated
+           */
+          _id: { type: "string", optional: true },
+          name: { type: "string" },
+          owner: {
+            type: "object",
+            props: {
+              name: { type: "string" },
+              phone: { type: "number" },
+            },
+            address: {
+              type: "object",
+              props: {
+                state: { type: "string" },
+                city: { type: "string" },
+                mainStreet: { type: "string" },
+                houseNumber: { type: "number" },
+                postalCode: { type: "number" },
+              },
+            },
+            phone: { type: "number", optional: true },
+            certificate: {
+              type: "object",
+              props: {
+                title: { type: "string" },
+                issuedAt: { type: "date" },
+                expiryDate: { type: "date" },
+                issuedBy: { type: "string" },
+              },
+            },
+            activeHours: {
+              type: "tuple",
+              items: ["number", "number", { type: "string", empty: true }],
+            },
+          },
+        },
+      },
+      get: {
+        type: "object",
+        optional: true,
+        props: centerSelectable(1),
+      },
+    },
+  },
+});
+
+/**
+ * Represent Input details
+ * this is input of updating center
+ * object "get" for specify user what wants to return
+ * object "set" for input value involve(name)
+ * @interface
+ */
+export interface UpdateCenterDetails {
+  set: {
+    //this is the _id of the Center that we want to update
+    _id: string;
+    //these fields are the fields that can be modified on Center
+    name: string;
+    owner: Owner;
+    address: Address;
+    phone?: number;
+    certificate: Certificate[];
+    //activeHours:[open, close, title (like mornning or breakfast)]
+    activeHours: [number, number, string?][];
+  };
+  get: RCenter;
+}

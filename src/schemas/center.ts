@@ -19,12 +19,12 @@ export interface Certificate {
   issuedBy: string;
 }
 
-interface Owner {
+export interface Owner {
   name: string;
   phone: number;
 }
 
-interface Address {
+export interface Address {
   state: string;
   city: string;
   mainStreet: string;
