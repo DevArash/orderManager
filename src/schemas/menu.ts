@@ -10,7 +10,7 @@ export interface MenuCategory {
 export interface PuMenu extends Base {
   name: string;
   subHeading?: string;
-  icon?: File;
+  icon?: string;
   description?: string;
   menuCategory: MenuCategory[];
 }
