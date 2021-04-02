@@ -23,8 +23,8 @@ export const checkUpdateTable = v.compile({
            */
           _id: { type: "string", optional: true },
           tableNo: { type: "number", optional: true },
-          tableCapacity: { type: "number" },
-          reservable: { type: "boolean" },
+          tableCapacity: { type: "number", optional: true },
+          reservable: { type: "boolean", optional: true },
         },
       },
       get: {

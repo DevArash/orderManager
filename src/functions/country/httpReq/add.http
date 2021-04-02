@@ -1,0 +1,18 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Country",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Iran",
+      "abbr":"IR",
+      "logo":"Iran Logo",
+      "geometries":[45, 50]
+    },
+    "get":{}
+  }
+}

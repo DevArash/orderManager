@@ -1,0 +1,18 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Order",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "orderStatus" : "Delivered",
+      "totalPrice": 50000,
+      "orderType": "Takeout",
+      "customerPhoneNumber": 9017213303
+    },
+    "get":{}
+  }
+}

@@ -1,0 +1,37 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+//Not Work : Just Work Without 'address', 'phone', 'certificate', 'activehours'
+
+{
+  "wants": {
+      "model": "Center",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "60647d84bbf4623668212ec7",
+      "name": "Updated Second Center",
+      "owner": {
+        "name": "Owner Name",
+        "phone": 123
+      },
+      "address": {
+        "state": "hamedan",
+        "city": "hamedan",
+        "mainStreet": "mehdieh",
+        "houseNumber": 1,
+        "postalCode": 1
+      },
+      "phone": 8131111,
+      "certificate": {
+        "title": "TITLE",
+        "issuedAt":  "ISSUEDAT",
+        "expiryDate": "EXPIRYDATE",
+        "issuedBy": "ISSUEDBY"
+      },
+      "activeHours":[6,10, "breakfast"]
+    },
+    "get":{}
+  }
+}

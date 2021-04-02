@@ -14,6 +14,10 @@ const check = v.compile({
         props: {
           name: { type: "string" },
           logo: { type: "string" },
+          geometries: {
+            type: "tuple",
+            items: ["number", "number"],
+          },
         },
       },
       get: {
@@ -26,7 +30,7 @@ const check = v.compile({
 });
 
 interface addingStateDetails {
-  set: { name: string; logo: string };
+  set: { name: string; logo: string; geometries: number };
   get: RState;
 }
 
@@ -36,12 +40,13 @@ export const addingState: AddingState = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, logo },
+    set: { name, logo, geometries },
     get,
   } = details;
   const createdState = await states.insertOne({
     name,
     logo,
+    geometries,
   });
   const ob = new Bson.ObjectID(createdState);
   return get ? getState({ _id: ob, get }) : { _id: ob };

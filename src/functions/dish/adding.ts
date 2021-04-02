@@ -1,10 +1,9 @@
-import FastestValidator from "https://esm.sh/fastest-validator@1";
+import { getDish } from "../mod.ts";
 import { Bson } from "../../../db.ts";
-import { dishes, dishSelectable, Dish, RDish } from "../../schemas/mod.ts";
-import { Rating } from "../../schemas/rating.ts";
 import { Recipe } from "../../schemas/mod.ts";
 import { throwError } from "../../utils/mod.ts";
-import { getDish } from "../mod.ts";
+import FastestValidator from "https://esm.sh/fastest-validator@1";
+import { dishes, dishSelectable, Dish, RDish } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -24,23 +23,9 @@ const check = v.compile({
               description: { type: "string" },
               ingredients: { type: "string" },
             },
-            photos: { type: "string" },
-            dishRating: {
-              type: "object",
-              rateNumber: {
-                type: "object",
-                props: {
-                  One: { type: "string" },
-                  Tow: { type: "string" },
-                  Three: { type: "string" },
-                  Four: { type: "string" },
-                  Five: { type: "string" },
-                },
-                rateDescribtion: { type: "string" },
-              },
-            },
-            calorie: { type: "number", optional: true },
           },
+          photos: { type: "string" },
+          calorie: { type: "number", optional: true },
         },
       },
       get: {
@@ -59,7 +44,6 @@ interface addingDishDetails {
     discount?: number;
     recipe?: Recipe;
     photos: string[];
-    dishRating: Rating;
     calorie?: number;
   };
   get: RDish;
@@ -71,7 +55,7 @@ export const addingDish: AddingDish = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, price, discount, recipe, photos, dishRating, calorie },
+    set: { name, price, discount, recipe, photos, calorie },
     get,
   } = details;
   const createdDish = await dishes.insertOne({
@@ -80,7 +64,6 @@ export const addingDish: AddingDish = async (details) => {
     discount,
     recipe,
     photos,
-    dishRating,
     calorie,
   });
   console.log(createdDish);

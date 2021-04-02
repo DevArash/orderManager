@@ -20,6 +20,10 @@ const check = v.compile({
           name: { type: "string" },
           abbr: { type: "string" },
           logo: { type: "string" },
+          geometries: {
+            type: "tuple",
+            items: ["number", "number"],
+          },
         },
       },
       get: {
@@ -32,7 +36,7 @@ const check = v.compile({
 });
 
 interface addingCountryDetails {
-  set: { name: string; abbr: string; logo: string };
+  set: { name: string; abbr: string; logo: string; geometries: number };
   get: RCountry;
 }
 
@@ -44,13 +48,14 @@ export const addingCountry: AddingCountry = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, abbr, logo },
+    set: { name, abbr, logo, geometries },
     get,
   } = details;
   const createdCountry = await countries.insertOne({
     name,
     abbr,
     logo,
+    geometries,
   });
   const ob = new Bson.ObjectID(createdCountry);
   return get ? getCountry({ _id: ob, get }) : { _id: ob };

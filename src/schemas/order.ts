@@ -13,7 +13,6 @@ export enum OrderType {
   Takeout = "TAKEOUT",
 }
 export interface PuOrder extends Base {
-  orderRating: Rating;
   orderStatus: OrderStatus;
   totalPrice: number;
   orderType: OrderType;
@@ -35,7 +34,6 @@ export interface Order extends PuOrder, EmOrder {}
 
 export interface ROrder {
   _id: RType;
-  orderRating: RType;
   orderStatus: RType;
   totalPrice: RType;
   orderType: RType;
@@ -48,7 +46,6 @@ export const orderSelectable = (depth: number = 4) => {
   depth--;
   const returnObj = {
     _id: fieldType,
-    orderRating: fieldType,
     orderStatus: fieldType,
     totalPrice: fieldType,
     orderType: fieldType,

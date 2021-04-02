@@ -24,6 +24,7 @@ export const checkUpdateParish = v.compile({
           _id: { type: "string", optional: true },
           name: { type: "string" },
           geometries: {
+            optional: true,
             type: "tuple",
             items: ["number", "number"],
           },

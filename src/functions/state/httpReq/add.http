@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "State",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Hamedan",
+      "logo": "Hamedan Logo",
+      "geometries": [10,15]
+    },
+    "get":{}
+  }
+}

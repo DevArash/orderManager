@@ -22,8 +22,9 @@ export const checkUpdateCity = v.compile({
            * The Values of the city that is going to be updated
            */
           _id: { type: "string", min: 2, max: 255, optional: true },
-          name: { type: "string" },
+          name: { type: "string", optional: true },
           geometries: {
+            optional: true,
             type: "tuple",
             items: ["number", "number"],
           },
@@ -48,10 +49,10 @@ export const checkUpdateCity = v.compile({
 export interface UpdateCityDetails {
   set: {
     //this is the _id of the City that we want to update
-    _id: string;
+    _id?: string;
     //these fields are the fields that can be modified on City
-    name: string;
-    geometries: ["number", "number"];
+    name?: string;
+    geometries?: ["number", "number"];
   };
   get: RCity;
 }

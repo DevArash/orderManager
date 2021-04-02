@@ -15,9 +15,6 @@ export interface PuMenu extends Base {
   menuCategory: MenuCategory[];
 }
 
-/* export interface EmMenu { //--> Cehck
-  dish: Dish[];
-} */
 export interface Menu extends PuMenu {}
 
 export interface RMenu {

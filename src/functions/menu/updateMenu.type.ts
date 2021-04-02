@@ -22,30 +22,32 @@ export const checkUpdateMenu = v.compile({
            * The Values of the menu that is going to be updated
            */
           _id: { type: "string", optional: true },
-          name: { type: "string" },
+          name: { type: "string", optional: true },
           subHeading: { type: "string", optional: true },
-          icon: { type: "string", optional: true },
+          icon: { type: "any", optional: true },
           description: { type: "string", optional: true },
-          meunCategory: {
+          menuCategory: {
             type: "object",
+            optional: true,
             props: {
-              title: { type: "string" },
+              title: { type: "string", optional: true },
               description: { type: "string", optional: true },
               dishes: {
                 type: "object",
+                optional: true,
                 props: {
-                  name: { type: "string" },
-                  price: { type: "number" },
+                  name: { type: "string", optional: true },
+                  price: { type: "number", optional: true },
                   discount: { type: "number", optional: true },
                   recipe: {
                     type: "object",
+                    optional: true,
                     props: {
-                      description: { type: " string" },
-                      ingredients: { type: "string" },
+                      description: { type: "string", optional: true },
+                      ingredients: { type: "string", optional: true },
                     },
                   },
-                  photos: { type: "string" },
-                  dishrating: { type: "string" }, //rating delete later
+                  photos: { type: "string", optional: true },
                   calorie: { type: "number", optional: true },
                 },
               },

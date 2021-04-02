@@ -28,15 +28,17 @@ export const checkUpdateCenter = v.compile({
            * The Values of the center that is going to be updated
            */
           _id: { type: "string", optional: true },
-          name: { type: "string" },
+          name: { type: "string", optional: true },
           owner: {
             type: "object",
+            optional: true,
             props: {
               name: { type: "string" },
               phone: { type: "number" },
             },
             address: {
               type: "object",
+              optional: true,
               props: {
                 state: { type: "string" },
                 city: { type: "string" },
@@ -48,14 +50,16 @@ export const checkUpdateCenter = v.compile({
             phone: { type: "number", optional: true },
             certificate: {
               type: "object",
+              optional: true,
               props: {
                 title: { type: "string" },
-                issuedAt: { type: "date" },
-                expiryDate: { type: "date" },
+                issuedAt: { type: "any" },
+                expiryDate: { type: "any" },
                 issuedBy: { type: "string" },
               },
             },
             activeHours: {
+              optional: true,
               type: "tuple",
               items: ["number", "number", { type: "string", empty: true }],
             },
@@ -81,15 +85,15 @@ export const checkUpdateCenter = v.compile({
 export interface UpdateCenterDetails {
   set: {
     //this is the _id of the Center that we want to update
-    _id: string;
+    _id?: string;
     //these fields are the fields that can be modified on Center
-    name: string;
-    owner: Owner;
-    address: Address;
+    name?: string;
+    owner?: Owner;
+    address?: Address;
     phone?: number;
-    certificate: Certificate[];
+    certificate?: Certificate[];
     //activeHours:[open, close, title (like mornning or breakfast)]
-    activeHours: [number, number, string?][];
+    activeHours?: [number, number, string?][];
   };
   get: RCenter;
 }

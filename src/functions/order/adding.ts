@@ -20,16 +20,6 @@ const check = v.compile({
       set: {
         type: "object",
         props: {
-          orderRating: {
-            type: "object",
-            props: {
-              rateNumber: {
-                type: "enum",
-                values: ["One", "Tow", "Three", "Four", "Five"],
-              },
-              rateDescription: { type: "string" },
-            },
-          },
           orderStatus: {
             type: "string",
             values: ["InPreparation", "Delivered", "Canceled"],
@@ -54,7 +44,6 @@ const check = v.compile({
 
 interface addingOrderDetails {
   set: {
-    orderRating: Rating;
     orderStatus: OrderStatus;
     totalPrice: number;
     orderType: OrderType;
@@ -71,7 +60,6 @@ export const addingOrder: AddingOrder = async (details) => {
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
     set: {
-      orderRating,
       orderStatus,
       totalPrice,
       orderType,
@@ -81,7 +69,6 @@ export const addingOrder: AddingOrder = async (details) => {
     get,
   } = details;
   const createdOrder = await orders.insertOne({
-    orderRating,
     orderStatus,
     totalPrice,
     orderType,

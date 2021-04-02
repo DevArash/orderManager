@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Dish",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Water",
+      "price": 5000,
+      "photos": "Some Water Photo"
+    },
+    "get":{}
+  }
+}

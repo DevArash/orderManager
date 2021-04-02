@@ -1,0 +1,23 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Menu",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Resturant menu",
+      "menuCategory":{
+        "title":"Drinks",
+        "dishes":{
+          "name":"Water",
+          "price":5000,
+          "photos":"Some Water Photo"
+        }
+      }
+    },
+    "get":{}
+  }
+}

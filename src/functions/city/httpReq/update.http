@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "City",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "60648691d2c0f8bcad161e92",
+      "name": "Tehran",
+      "geometries":[20,30]
+    },
+    "get":{}
+  }
+}

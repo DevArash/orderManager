@@ -1,0 +1,16 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Parish",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Besat",
+      "geometries":[50, 50]
+    },
+    "get":{}
+  }
+}

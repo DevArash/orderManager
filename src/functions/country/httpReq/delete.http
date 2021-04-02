@@ -1,0 +1,19 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+//Not Work : Success True But Not Delete
+{
+  "wants": {
+      "model": "Country",
+      "doit":"Delete"
+  },
+  "details":{
+    "set":{
+      "_id":"604db229c134cb08987836e8"
+    },
+    "get":{
+      "name":1
+    }
+  }
+}
+

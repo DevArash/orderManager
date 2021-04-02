@@ -1,0 +1,34 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Center",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "name": "Second Center",
+      "owner": {
+        "name": "Owner Name",
+        "phone": 123
+      },
+      "address": {
+        "state": "hamedan",
+        "city": "hamedan",
+        "mainStreet": "mehdieh",
+        "houseNumber": 1,
+        "postalCode": 1
+      },
+      "phone": 8131111,
+      "certificate": {
+        "title": "TITLE",
+        "issuedAt":  "ISSUEDAT",
+        "expiryDate": "EXPIRYDATE",
+        "issuedBy": "ISSUEDBY"
+      },
+      "activeHours":[6,10, "breakfast"]
+    },
+    "get":{}
+  }
+}

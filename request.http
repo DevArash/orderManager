@@ -3,12 +3,13 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "City",
-      "doit":"Delete"
+      "model": "User",
+      "doit":"login"
   },
   "details":{
     "set":{
-      "_id":"604db2e7b794b41279fba06b"
+      "phone":9017213303,
+      "code": 123456789
     },
     "get":{}
   }

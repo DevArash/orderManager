@@ -29,27 +29,19 @@ export const checkUpdateOrder = v.compile({
            * The Values of the order that is going to be updated
            */
           _id: { type: "string", optional: true },
-          orderRating: {
-            type: "object",
-            props: {
-              rateNumber: {
-                type: "enum",
-                values: ["One", "Tow", "Three", "Four", "Five"],
-              },
-              rateDescription: { type: "string" },
-            },
-          },
           orderStatus: {
             type: "string",
+            optional: true,
             values: ["InPreparation", "Delivered", "Canceled"],
           },
-          totalPrice: { type: "number" },
+          totalPrice: { type: "number", optional: true },
           orderType: {
             type: "enum",
+            optional: true,
             values: ["Table", "Takeout"],
           },
           preprationTime: { type: "date", optional: true },
-          customerPhoneNumber: { type: "number" },
+          customerPhoneNumber: { type: "number", optional: true },
         },
       },
       get: {
@@ -73,7 +65,6 @@ export interface UpdateOrderDetails {
     //this is the _id of the Order that we want to update
     _id: string;
     //these fields are the fields that can be modified
-    orderRating: Rating;
     orderStatus: OrderStatus;
     totalPrice: number;
     orderType: OrderType;

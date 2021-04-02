@@ -1,0 +1,16 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Parish",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "6065c7570a0a3c503c7ef6c9",
+      "name": "Etemadieh"
+    },
+    "get":{}
+  }
+}

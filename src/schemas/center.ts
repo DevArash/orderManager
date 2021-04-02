@@ -14,8 +14,8 @@ import {
 
 export interface Certificate {
   title: string;
-  issuedAt: Date;
-  expiryDate: Date;
+  issuedAt: any;
+  expiryDate: any;
   issuedBy: string;
 }
 

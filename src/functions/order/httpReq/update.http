@@ -1,0 +1,21 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+//Not Work : contains forbidden keys
+
+{
+  "wants": {
+      "model": "Menu",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "6065c3c747de4ef750f351a1",
+      "orderStatus" : "Canceled",
+      "totalPrice": 50000,
+      "orderType": "Table",
+      "customerPhoneNumber": 9017213303
+    },
+    "get":{}
+  }
+}

@@ -16,24 +16,20 @@ export const checkUpdateDish = v.compile({
     props: {
       set: {
         type: "object",
-        strict: true,
         props: {
-          /**
-           * The Values of the dish that is going to be updated
-           */
           _id: { type: "string", optional: true },
-          name: { type: "string" },
-          price: { type: "number" },
+          name: { type: "string", optional: true },
+          price: { type: "number", optional: true },
           discount: { type: "number", optional: true },
           recipe: {
             type: "object",
+            optional: true,
             props: {
-              description: { type: " string" },
-              ingredients: { type: "string" },
+              description: { type: "string", optional: true },
+              ingredients: { type: "string", optional: true },
             },
           },
-          photos: { type: "string" },
-          dishrating: { type: "string" }, //rating delete later
+          photos: { type: "string", optional: true },
           calorie: { type: "number", optional: true },
         },
       },
@@ -63,7 +59,6 @@ export interface UpdateDishDetails {
     discount?: number;
     recipe?: Recipe;
     photos: string[];
-    dishRating: Rating;
     calorie?: number;
   };
   get: RDish;

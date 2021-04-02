@@ -1,5 +1,4 @@
 import db from "../../db.ts";
-import { Rating } from "./rating.ts";
 import { Base, fieldType, RType, Recipe } from "./mod.ts";
 export interface PuDish extends Base {
   name: string;
@@ -7,7 +6,6 @@ export interface PuDish extends Base {
   discount?: number;
   recipe?: Recipe;
   photos: string[];
-  dishRating: Rating;
   calorie?: number;
 }
 
@@ -20,7 +18,6 @@ export interface RDish {
   discont?: RType;
   recepies?: RType;
   photos: RType;
-  dishRating: RType;
   calorie?: RType;
 }
 
@@ -33,7 +30,6 @@ export const dishSelectable = (depth: number = 4) => {
     discont: fieldType,
     recepies: fieldType,
     photos: fieldType,
-    dishRating: fieldType,
     calorie: fieldType,
   };
   returnObj;

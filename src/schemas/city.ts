@@ -46,6 +46,7 @@ export interface City extends EmCity, PuCity {}
 export interface RCity {
   _id: RType;
   name: RType;
+  geometries: RType;
   states: RState;
   parishes: RParish;
   countries: RCountry;
@@ -57,6 +58,7 @@ export const citySelectable: any = (depth: number = 4) => {
   depth--;
   const returnObj = {
     name: fieldType,
+    geometries: fieldType,
   };
   return depth > 0
     ? {

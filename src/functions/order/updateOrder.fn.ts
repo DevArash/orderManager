@@ -21,7 +21,6 @@ export const updateOrder: UpdateOrder = async (details, context) => {
   const {
     set: {
       _id,
-      orderRating,
       orderStatus,
       totalPrice,
       orderType,
@@ -35,7 +34,6 @@ export const updateOrder: UpdateOrder = async (details, context) => {
     { _id: new Bson.ObjectID(_id) },
     {
       $set: {
-        orderRating,
         orderStatus,
         totalPrice,
         orderType,

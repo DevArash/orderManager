@@ -22,9 +22,10 @@ export const checkUpdateState = v.compile({
            * The Values of the center that is going to be updated
            */
           _id: { type: "string", optional: true },
-          name: { type: "string" },
-          logo: { type: "string" },
+          name: { type: "string", optional: true },
+          logo: { type: "string", optional: true },
           geometries: {
+            optional: true,
             type: "tuple",
             items: ["number", "number"],
           },

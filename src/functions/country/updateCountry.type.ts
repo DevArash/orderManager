@@ -22,10 +22,11 @@ export const checkUpdateCountry = v.compile({
            * The Values of the country that is going to be updated
            */
           _id: { type: "string", optional: true },
-          name: { type: "string" },
-          abbr: { type: "string" },
-          logo: { type: "string" },
+          name: { type: "string", optional: true },
+          abbr: { type: "string", optional: true },
+          logo: { type: "string", optional: true },
           geometries: {
+            optional: true,
             type: "tuple",
             item: ["number", "number"],
           },
@@ -50,12 +51,12 @@ export const checkUpdateCountry = v.compile({
 export interface UpdateCountryDetails {
   set: {
     //this is the _id of the Country that we want to update
-    _id: string;
+    _id?: string;
     //these fields are the fields that can be modified on Country
-    name: string;
-    abbr: string;
-    logo: string;
-    geometries: ["number", "number"];
+    name?: string;
+    abbr?: string;
+    logo?: string;
+    geometries?: ["number", "number"];
   };
   get: RCountry;
 }

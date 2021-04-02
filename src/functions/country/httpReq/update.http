@@ -1,0 +1,19 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Country",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "604db220c134cb08987836e7",
+      "name": "Germany",
+      "abbr":"GER",
+      "logo":"Germany Logo",
+      "geometries":[20,60]
+    },
+    "get":{}
+  }
+}

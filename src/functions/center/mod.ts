@@ -3,16 +3,17 @@ import { Center } from "../../schemas/mod.ts";
 import { throwError } from "../../utils/mod.ts";
 import { addingCenter } from "./adding.ts";
 import { deleteCenterFn } from "./deleteCenter.fn.ts";
+import { updateCenter } from "./updateCenter.fn.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
   doit: {
     type: "enum",
-    values: ["Adding", "Delete"],
+    values: ["Add", "Delete", "Update"],
   },
 });
 
-export type CenterDoit = "Adding" | "Delete";
+export type CenterDoit = "Add" | "Delete" | "Update";
 
 type CenterFns = (doit: CenterDoit, details: any) => Promise<Partial<Center>>;
 
@@ -20,8 +21,9 @@ export const centerFns: CenterFns = (doit, details) => {
   const checkDoit = check({ doit });
   return checkDoit === true
     ? {
-        ["Adding"]: async () => await addingCenter(details),
+        ["Add"]: async () => await addingCenter(details),
         ["Delete"]: async () => await deleteCenterFn(details),
+        ["Update"]: async () => await updateCenter(details),
       }[doit]()
     : throwError(checkDoit[0].message);
 };

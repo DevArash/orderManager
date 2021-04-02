@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Table",
+      "doit":"Add"
+  },
+  "details":{
+    "set":{
+      "tableNo": 2,
+      "tableCapacity": 4,
+      "reservable": true
+    },
+    "get":{}
+  }
+}

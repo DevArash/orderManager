@@ -41,8 +41,8 @@ const check = v.compile({
             type: "object",
             props: {
               title: { type: "string" },
-              issuedAt: { type: "date" },
-              expiryDate: { type: "date" },
+              issuedAt: { type: "any" },
+              expiryDate: { type: "any" },
               issuedBy: { type: "string" },
             },
           },

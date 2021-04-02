@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "Dish",
+      "doit":"Update"
+  },
+  "details":{
+    "set":{
+      "_id": "60486d8e96114b7583e56d37",
+      "name": "Orange juice",
+      "price": 7000
+    },
+    "get":{}
+  }
+}
