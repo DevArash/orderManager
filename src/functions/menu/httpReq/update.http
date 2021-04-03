@@ -1,8 +1,6 @@
 POST http://localhost:8000/funql
 content-type: application/json
 
-//Not Work With All Props (Work With Name)
-
 {
   "wants": {
       "model": "Menu",
@@ -11,7 +9,15 @@ content-type: application/json
   "details":{
     "set":{
       "_id": "6065c09af0fb76c1b45511b2",
-      "name": "Orange juice"
+      "name": "Orange juice",
+      "menuCategory":{
+        "title":"Drinks",
+        "dish":{
+          "name":"water",
+          "price": 5000,
+          "photo": "some water photo"
+        }
+      }
     },
     "get":{}
   }

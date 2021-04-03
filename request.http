@@ -9,7 +9,7 @@ content-type: application/json
   "details":{
     "set":{
       "phone":9017213303,
-      "code": 123456789
+      "code":111111
     },
     "get":{}
   }
