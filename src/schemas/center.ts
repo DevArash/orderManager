@@ -10,6 +10,17 @@ import {
   PuTable,
   RTable,
   tableSelectable,
+  PuUser,
+  RUser,
+  userSelectable,
+  PuCountry,
+  PuCity,
+  PuParish,
+  PuState,
+  RCity,
+  RCountry,
+  RParish,
+  RState,
 } from "./mod.ts";
 
 export interface Certificate {
@@ -19,23 +30,8 @@ export interface Certificate {
   issuedBy: string;
 }
 
-export interface Owner {
-  name: string;
-  phone: number;
-}
-
-export interface Address {
-  state: string;
-  city: string;
-  mainStreet: string;
-  houseNumber: number;
-  postalCode: number;
-}
-
 export interface PuCenter extends Base {
   name: string;
-  owner: Owner;
-  address: Address;
   phone?: number;
   certificate: Certificate[];
   //activeHours:[open, close, title (like mornning or breakfast)]
@@ -44,7 +40,14 @@ export interface PuCenter extends Base {
 
 export interface EmCenter {
   menus: PuMenu[];
+  user: PuUser[];
   tables: PuTable[];
+  address: {
+    country: PuCountry;
+    state: PuState;
+    City: PuCity;
+    Parish: PuParish;
+  };
 }
 
 export interface InRelCenter {
@@ -62,16 +65,34 @@ export interface OutRelCenter {
 
 export interface Center extends EmCenter, PuCenter {}
 
+export interface RAddress {
+  country: RCountry;
+  state: RState;
+  City: RCity;
+  Parish: RParish;
+}
+
+export const addressSelectable: any = (depth: number = 4) => {
+  depth--;
+  const returnObj = {
+    country: fieldType,
+    state: fieldType,
+    city: fieldType,
+    parish: fieldType,
+  };
+  return returnObj;
+};
+
 export interface RCenter {
   _id: RType;
   name: RType;
-  owner: RType;
-  address: RType;
   phone: RType;
   certificate: RType;
   activeHours: RType;
   menus: RMenu;
   tables: RTable;
+  user: RType;
+  address: RAddress;
 }
 
 export const centerSelectable = (depth: number = 4): any => {
@@ -79,8 +100,6 @@ export const centerSelectable = (depth: number = 4): any => {
   const returnObj = {
     _id: fieldType,
     name: fieldType,
-    owner: fieldType,
-    address: fieldType,
     phone: fieldType,
     certificate: fieldType,
     acticveHours: fieldType,
@@ -97,6 +116,16 @@ export const centerSelectable = (depth: number = 4): any => {
           type: "object",
           optional: true,
           props: tableSelectable(depth),
+        },
+        user: {
+          type: "object",
+          optional: true,
+          props: userSelectable(depth),
+        },
+        address: {
+          type: "object",
+          optional: true,
+          props: addressSelectable(depth),
         },
       }
     : returnObj;

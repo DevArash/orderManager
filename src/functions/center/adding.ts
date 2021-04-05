@@ -19,23 +19,6 @@ const check = v.compile({
         type: "object",
         props: {
           name: { type: "string" },
-          owner: {
-            type: "object",
-            props: {
-              name: { type: "string" },
-              phone: { type: "number" },
-            },
-          },
-          address: {
-            type: "object",
-            props: {
-              state: { type: "string" },
-              city: { type: "string" },
-              mainStreet: { type: "string" },
-              houseNumber: { type: "number" },
-              postalCode: { type: "number" },
-            },
-          },
           phone: { type: "number", optional: true },
           certificate: {
             type: "object",
@@ -64,17 +47,6 @@ const check = v.compile({
 interface addingCenterDetails {
   set: {
     name: string;
-    owner: {
-      name: string;
-      phone: number;
-    };
-    address: {
-      state: string;
-      city: string;
-      mainStreet: string;
-      houseNumber: number;
-      postalCode: number;
-    };
     phone: number;
     certificate: Certificate[];
     activeHours: [number, number, string?][];
@@ -88,13 +60,11 @@ export const addingCenter: AddingCenter = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, owner, address, phone, certificate, activeHours },
+    set: { name, phone, certificate, activeHours },
     get,
   } = details;
   const createdCenter = await centers.insertOne({
     name,
-    owner,
-    address,
     phone,
     certificate,
     activeHours,

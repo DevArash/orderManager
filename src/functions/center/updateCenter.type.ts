@@ -1,11 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import {
-  Owner,
-  RCenter,
-  Address,
-  Certificate,
-  centerSelectable,
-} from "../../schemas/mod.ts";
+import { RCenter, Certificate, centerSelectable } from "../../schemas/mod.ts";
 const v = new FastestValidator();
 
 /**
@@ -29,40 +23,21 @@ export const checkUpdateCenter = v.compile({
            */
           _id: { type: "string", optional: true },
           name: { type: "string", optional: true },
-          owner: {
+          phone: { type: "number", optional: true },
+          certificate: {
             type: "object",
             optional: true,
             props: {
-              name: { type: "string" },
-              phone: { type: "number" },
+              title: { type: "string" },
+              issuedAt: { type: "any" },
+              expiryDate: { type: "any" },
+              issuedBy: { type: "string" },
             },
-            address: {
-              type: "object",
-              optional: true,
-              props: {
-                state: { type: "string" },
-                city: { type: "string" },
-                mainStreet: { type: "string" },
-                houseNumber: { type: "number" },
-                postalCode: { type: "number" },
-              },
-            },
-            phone: { type: "number", optional: true },
-            certificate: {
-              type: "object",
-              optional: true,
-              props: {
-                title: { type: "string" },
-                issuedAt: { type: "any" },
-                expiryDate: { type: "any" },
-                issuedBy: { type: "string" },
-              },
-            },
-            activeHours: {
-              optional: true,
-              type: "tuple",
-              items: ["number", "number", { type: "string", empty: true }],
-            },
+          },
+          activeHours: {
+            optional: true,
+            type: "tuple",
+            items: ["number", "number", { type: "string", empty: true }],
           },
         },
       },
@@ -88,8 +63,6 @@ export interface UpdateCenterDetails {
     _id?: string;
     //these fields are the fields that can be modified on Center
     name?: string;
-    owner?: Owner;
-    address?: Address;
     phone?: number;
     certificate?: Certificate[];
     //activeHours:[open, close, title (like mornning or breakfast)]

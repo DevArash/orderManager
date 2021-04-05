@@ -19,13 +19,13 @@ export const updateCenter: UpdateCenter = async (details, context) => {
   const detailsIsRight = checkUpdateCenter({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { _id, name, owner, address, phone, certificate, activeHours },
+    set: { _id, name, phone, certificate, activeHours },
     get,
   } = details;
 
   await centers.updateOne(
     { _id: new Bson.ObjectID(_id) },
-    { $set: { name, owner, address, phone, certificate, activeHours } }
+    { $set: { name, phone, certificate, activeHours } }
   );
 
   const foundNewCenter = await centers.findOne({
