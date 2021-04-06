@@ -3,16 +3,14 @@ content-type: application/json
 
 {
   "wants": {
-      "model": "State",
+      "model": "User",
       "doit":"Delete"
   },
   "details":{
     "set":{
-      "_id":"6065ce5e0ba75b06e50e1fbb"
+      "_id":"60544690895e80dc6860ddf2"
     },
-    "get":{
-      "name":1
-    }
+    "get":{}
   }
 }
 

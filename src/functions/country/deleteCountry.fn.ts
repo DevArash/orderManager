@@ -8,9 +8,11 @@ import {
   DeleteCountryDetails,
 } from "./deleteCountry.type.ts";
 
-const deleteCountry = async (_id: string) => {
+type DeleteCountry = (details: DeleteCountryDetails, context?: Context) => any;
+
+const deleteCountry = async (_id: Bson.ObjectID) => {
   const deletedCountry = await countries.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id,
   });
   // step1: delete the State and all City of this Country,
   const a = await states.deleteMany({
@@ -20,15 +22,12 @@ const deleteCountry = async (_id: string) => {
     "country._id": deletedCountry!._id,
   });
   //step 2: delete the Country itself
-  await countries.deleteOne({ _id: new Bson.ObjectID(_id) });
+  await countries.deleteOne({ _id });
   return deletedCountry;
 };
 
-type DeleteCountry = (details: DeleteCountryDetails, context?: Context) => any;
-
 /**
  * @function
- * Represent delete blogTag(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
@@ -40,7 +39,5 @@ export const deleteCountryFn: DeleteCountry = async (details, context) => {
     get: {},
   } = details;
   const objId = new Bson.ObjectID(_id);
-  return details.get
-    ? getCountry({ _id: objId, get: details.get })
-    : deleteCountry(_id);
+  return deleteCountry(objId);
 };

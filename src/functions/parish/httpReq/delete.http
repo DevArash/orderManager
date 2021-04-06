@@ -1,7 +1,6 @@
 POST http://localhost:8000/funql
 content-type: application/json
 
-//Not Work : Success True But Not Delete
 {
   "wants": {
       "model": "Parish",
@@ -9,7 +8,7 @@ content-type: application/json
   },
   "details":{
     "set":{
-      "_id":"6065c7570a0a3c503c7ef6c9"
+      "_id":"604db30f01732bf64f8399ee"
     },
     "get":{
       "name":1

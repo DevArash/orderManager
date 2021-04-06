@@ -5,9 +5,11 @@ import { Context } from "../utils/context.ts";
 import { tables, centers } from "./../../schemas/mod.ts";
 import { checkDeleteTable, DeleteTableDetails } from "./deleteTable.type.ts";
 
-const deleteTable = async (_id: string) => {
+type DeleteTable = (details: DeleteTableDetails, context?: Context) => any;
+
+const deleteTable = async (_id: Bson.ObjectID) => {
   const deletedTable = await tables.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id,
   });
   // step1: delete the Center of this Table,
   const a = await centers.deleteMany({
@@ -15,15 +17,12 @@ const deleteTable = async (_id: string) => {
   });
 
   //step 2: delete the Table itself
-  await tables.deleteOne({ _id: new Bson.ObjectID(_id) });
+  await tables.deleteOne({ _id });
   return deletedTable;
 };
 
-type DeleteTable = (details: DeleteTableDetails, context?: Context) => any;
-
 /**
  * @function
- * Represent delete blogTag(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
@@ -35,7 +34,5 @@ export const deleteTableFn: DeleteTable = async (details, context) => {
     get: {},
   } = details;
   const objId = new Bson.ObjectID(_id);
-  return details.get
-    ? getTable({ _id: objId, get: details.get })
-    : deleteTable(_id);
+  return deleteTable(objId);
 };

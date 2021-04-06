@@ -11,6 +11,7 @@ const deleteDish = async (_id: Bson.ObjectID) => {
   const deletedDish = await dishes.findOne({
     _id,
   });
+
   //step 1: delete the Dish itself
   await dishes.deleteOne({ _id });
   return deletedDish;
@@ -18,10 +19,10 @@ const deleteDish = async (_id: Bson.ObjectID) => {
 
 /**
  * @function
- * Represent delete blogTagdeleteOne(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
+
 export const deleteDishFn: DeleteDish = async (details, context) => {
   const detailsIsRight = checkDeleteDish({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);

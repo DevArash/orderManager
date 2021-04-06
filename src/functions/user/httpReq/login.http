@@ -1,0 +1,16 @@
+POST http://localhost:8000/funql
+content-type: application/json
+
+{
+  "wants": {
+      "model": "User",
+      "doit":"login"
+  },
+  "details":{
+    "set":{
+      "phone":9017213303,
+      "code":111111
+    },
+    "get":{}
+  }
+}

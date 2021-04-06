@@ -1,7 +1,6 @@
 POST http://localhost:8000/funql
 content-type: application/json
 
-//Not Work : Success True But Not Delete
 {
   "wants": {
       "model": "Menu",
@@ -9,7 +8,7 @@ content-type: application/json
   },
   "details":{
     "set":{
-      "_id":"604470e156f2151dd7653e79"
+      "_id":"6044713356f2151dd7653e7a"
     },
     "get":{
       "name":1

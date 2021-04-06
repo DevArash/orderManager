@@ -11,9 +11,11 @@ import {
 } from "./../../schemas/mod.ts";
 import { checkDeleteUser, DeleteUserDetails } from "./deleteUser.type.ts";
 
-const deleteUser = async (_id: string) => {
+type DeleteUser = (details: DeleteUserDetails, context?: Context) => any;
+
+const deleteUser = async (_id: Bson.ObjectID) => {
   const deletedUser = await users.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id,
   });
 
   // step1: delete the Address of this User,
@@ -31,15 +33,12 @@ const deleteUser = async (_id: string) => {
   });
 
   //step 2: delete the User itself
-  await users.deleteOne({ _id: new Bson.ObjectID(_id) });
+  await users.deleteOne({ _id });
   return deletedUser;
 };
 
-type DeleteUser = (details: DeleteUserDetails, context?: Context) => any;
-
 /**
  * @function
- * Represent delete blogTag(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
@@ -51,7 +50,5 @@ export const deleteUserFn: DeleteUser = async (details, context) => {
     get: {},
   } = details;
   const objId = new Bson.ObjectID(_id);
-  return details.get
-    ? getUser({ _id: objId, get: details.get })
-    : deleteUser(_id);
+  return deleteUser(objId);
 };

@@ -5,9 +5,11 @@ import { Context } from "../utils/context.ts";
 import { parishes, cities, states, countries } from "./../../schemas/mod.ts";
 import { checkDeleteParish, DeleteParishDetails } from "./deleteParish.type.ts";
 
-const deleteParish = async (_id: string) => {
+type DeleteParish = (details: DeleteParishDetails, context?: Context) => any;
+
+const deleteParish = async (_id: Bson.ObjectID) => {
   const deletedParish = await parishes.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id,
   });
   // step1: delete the city and all state, country of this Parish,
   const a = await cities.deleteMany({
@@ -20,15 +22,12 @@ const deleteParish = async (_id: string) => {
     "parish._id": deletedParish!._id,
   });
   //step 2: delete the Parish itself
-  await parishes.deleteOne({ _id: new Bson.ObjectID(_id) });
+  await parishes.deleteOne({ _id });
   return deletedParish;
 };
 
-type DeleteParish = (details: DeleteParishDetails, context?: Context) => any;
-
 /**
  * @function
- * Represent delete blogTag(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
@@ -40,7 +39,5 @@ export const deleteParishFn: DeleteParish = async (details, context) => {
     get: {},
   } = details;
   const objId = new Bson.ObjectID(_id);
-  return details.get
-    ? getParish({ _id: objId, get: details.get })
-    : deleteParish(_id);
+  return deleteParish(objId);
 };

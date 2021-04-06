@@ -1,7 +1,8 @@
 POST http://localhost:8000/funql
 content-type: application/json
 
-//Not Work : Success True But Not Delete
+//Error => return all props 
+
 {
   "wants": {
       "model": "City",
@@ -9,10 +10,10 @@ content-type: application/json
   },
   "details":{
     "set":{
-      "_id":"604db2e7b794b41279fba06b"
+      "_id":"606be46bf43fcd55b94c72c1"
     },
     "get":{
-      "name":1
+      "geometries":1
     }
   }
 }

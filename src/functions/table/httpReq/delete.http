@@ -1,7 +1,6 @@
 POST http://localhost:8000/funql
 content-type: application/json
 
-//Not Work : Success True But Not Delete
 {
   "wants": {
       "model": "Table",

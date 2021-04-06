@@ -5,24 +5,23 @@ import { Context } from "../utils/context.ts";
 import { orders, dishes } from "./../../schemas/mod.ts";
 import { checkDeleteOrder, DeleteOrderDetails } from "./deleteOrder.type.ts";
 
-const deleteOrder = async (_id: string) => {
+type DeleteOrder = (details: DeleteOrderDetails, context?: Context) => any;
+
+const deleteOrder = async (_id: Bson.ObjectID) => {
   const deletedOrder = await orders.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id,
   });
   // step1: delete the Dishes of this Order,
   const a = await dishes.deleteMany({
     "order._id": deletedOrder!._id,
   });
   //step 2: delete the Order itself
-  await orders.deleteOne({ _id: new Bson.ObjectID(_id) });
+  await orders.deleteOne({ _id });
   return deletedOrder;
 };
 
-type DeleteOrder = (details: DeleteOrderDetails, context?: Context) => any;
-
 /**
  * @function
- * Represent delete blogTag(delete the desired blogTag from DB)
  * @param details
  * @param context
  */
@@ -34,7 +33,5 @@ export const deleteOrderFn: DeleteOrder = async (details, context) => {
     get: {},
   } = details;
   const objId = new Bson.ObjectID(_id);
-  return details.get
-    ? getOrder({ _id: objId, get: details.get })
-    : deleteOrder(_id);
+  return deleteOrder(objId);
 };
