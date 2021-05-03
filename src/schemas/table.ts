@@ -28,7 +28,6 @@ export interface RTable extends RBase {
   tableNo: RType;
   tableCapacity: RType;
   reservable: RType;
-  centers: RCenter;
 }
 
 export interface Table extends PuTable, EmTable {}
