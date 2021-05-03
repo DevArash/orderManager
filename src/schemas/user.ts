@@ -22,18 +22,22 @@ export enum Gender {
 }
 
 export enum Level {
-  Normal = "Normal",
   Admin = "Admin",
   Owner = "Owner",
+  Operator = "Operator",
+  Chef = "Chef",
+  Normal = "Normal",
 }
 
 export interface PuUser extends Base {
+  photo: any;
   name: string;
   family: string;
   phone: number;
   gender: Gender;
   birthDate: Date;
   postalCode: string;
+  idNumber: number;
   level: Level[];
   email: string;
   password: string;
@@ -53,12 +57,14 @@ export interface User extends PuUser, EmUser {}
 
 export interface RUser {
   _id: RType;
+  photo: RType;
   name: RType;
   family: RType;
   phone: RType;
   gender: RType;
   birthDate: RType;
   postalCode?: RType;
+  idNumber: RType;
   address: {
     country: RCountry;
     state: RState;
@@ -74,12 +80,14 @@ export const userSelectable = (depth: number = 4) => {
   depth--;
   const returnObj = {
     _id: fieldType,
+    photo: fieldType,
     name: fieldType,
     family: fieldType,
     phone: fieldType,
     gender: fieldType,
     birthDate: fieldType,
     postalCode: fieldType,
+    idNumber: fieldType,
     address: {
       type: "object",
       optional: true,
