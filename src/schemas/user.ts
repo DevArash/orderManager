@@ -42,6 +42,7 @@ export interface PuUser extends Base {
   email: string;
   password: string;
   isActive: boolean;
+  lastRefer: Date;
 }
 
 export interface EmUser {
@@ -74,6 +75,7 @@ export interface RUser {
   email: RType;
   password: RType;
   isActive: RType;
+  lastRefer: RType;
 }
 
 export const userSelectable = (depth: number = 4) => {
@@ -98,6 +100,7 @@ export const userSelectable = (depth: number = 4) => {
     level: fieldType,
     email: fieldType,
     isActive: fieldType,
+    lastRefer: fieldType,
   };
   return depth > 0
     ? {
