@@ -6,6 +6,8 @@ export enum OrderStatus {
   InPreparation = "INPREPARATION",
   Delivered = "DELIVERED",
   Canceled = "CANCELED",
+  SeenByOperator = "SEENBYOPETOR",
+  SeenByChef = "SEENBYCHEF",
 }
 
 export enum OrderType {
@@ -13,11 +15,11 @@ export enum OrderType {
   Takeout = "TAKEOUT",
 }
 export interface PuOrder extends Base {
-  orderStatus: OrderStatus;
-  totalPrice: number;
   orderType: OrderType;
+  orderStatus: OrderStatus;
+  orderID: number;
+  totalPrice: number;
   preprationTime?: Date;
-  customerPhoneNumber: number;
 }
 
 export interface EmOrder {
