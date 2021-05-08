@@ -2,7 +2,7 @@ import { getTable } from "../mod.ts";
 import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://esm.sh/fastest-validator@1";
-import { tables, Table, RTable } from "../../schemas/mod.ts";
+import { tables, Table, RTable, Reserve } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -37,7 +37,7 @@ interface addingTableDetails {
   set: {
     tableNo?: number;
     tableCapacity: number;
-    reservable: boolean;
+    reserve: Reserve;
   };
   get: RTable;
 }
@@ -48,13 +48,13 @@ export const addingTable: AddingTable = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { tableNo, tableCapacity, reservable },
+    set: { tableNo, tableCapacity, reserve },
     get,
   } = details;
   const createdTable = await tables.insertOne({
     tableNo,
     tableCapacity,
-    reservable,
+    reserve,
   });
   console.log(createdTable);
   const ob = new Bson.ObjectID(createdTable);
