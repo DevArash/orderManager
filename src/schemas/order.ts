@@ -1,5 +1,4 @@
 import db from "../../db.ts";
-import { Rating } from "./rating.ts";
 import { Base, RType, fieldType, Dish, dishSelectable, RDish } from "./mod.ts";
 
 export enum OrderStatus {

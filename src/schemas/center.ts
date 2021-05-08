@@ -11,7 +11,6 @@ import {
   RTable,
   tableSelectable,
   PuUser,
-  RUser,
   userSelectable,
   PuCountry,
   PuCity,

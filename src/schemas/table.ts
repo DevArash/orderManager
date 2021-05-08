@@ -9,10 +9,15 @@ import {
   RCenter,
 } from "./mod.ts";
 
+export interface Reserve {
+  reservable: boolean;
+  reservedBy: string;
+}
+
 export interface PuTable extends Base {
   tableNo?: number;
   tableCapacity: number;
-  reservable: boolean;
+  reserve: Reserve;
 }
 
 export interface EmTable {
