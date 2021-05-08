@@ -1,4 +1,3 @@
-import { getTable } from "../mod.ts";
 import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
 import { Context } from "../utils/context.ts";

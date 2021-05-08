@@ -1,5 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { RTable, tableSelectable } from "../../schemas/mod.ts";
+import { Reserve, RTable, tableSelectable } from "../../schemas/mod.ts";
 const v = new FastestValidator();
 
 /**
@@ -24,7 +24,13 @@ export const checkUpdateTable = v.compile({
           _id: { type: "string", optional: true },
           tableNo: { type: "number", optional: true },
           tableCapacity: { type: "number", optional: true },
-          reservable: { type: "boolean", optional: true },
+          reserve: {
+            type: "object",
+            props: {
+              reservable: "boolean",
+              reservedBy: "string",
+            },
+          },
         },
       },
       get: {
@@ -50,7 +56,7 @@ export interface UpdateTableDetails {
     //these fields are the fields that can be modified on Table
     tableNo?: number;
     tableCapacity: number;
-    reservable: boolean;
+    reserve: Reserve;
   };
   get: RTable;
 }
