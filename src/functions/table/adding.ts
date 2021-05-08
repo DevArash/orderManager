@@ -1,7 +1,7 @@
-import FastestValidator from "https://esm.sh/fastest-validator@1";
-import { Bson } from "../../../db.ts";
 import { getTable } from "../mod.ts";
+import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
+import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { tables, tableSelectable, Table, RTable } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
@@ -14,7 +14,13 @@ const check = v.compile({
         props: {
           tableNo: { type: "number", optional: true },
           tableCapacity: { type: "number" },
-          reservable: { type: "boolean" },
+          reserve: {
+            type: "object",
+            props: {
+              reservable: "boolean",
+              reservedBy: "string",
+            },
+          },
         },
         /*         get: {
           //When Comment Work
