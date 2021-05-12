@@ -1,6 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { RDish, dishSelectable, Recipe, Rating } from "../../schemas/mod.ts";
-const v = new FastestValidator();
 
 /**
  * this is validator for update dish
@@ -10,7 +9,8 @@ const v = new FastestValidator();
  * object "set" for validate input value
  */
 
-export const checkUpdateDish = v.compile({
+const v = new FastestValidator();
+export const schema = {
   details: {
     type: "object",
     props: {
@@ -40,7 +40,9 @@ export const checkUpdateDish = v.compile({
       },
     },
   },
-});
+};
+
+export const checkUpdateDish = v.compile(schema);
 
 /**
  * Represent Input details

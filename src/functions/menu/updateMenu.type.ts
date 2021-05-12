@@ -1,6 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { RMenu, menuSelectable, MenuCategory } from "../../schemas/mod.ts";
-const v = new FastestValidator();
 
 /**
  * this is validator for update menu
@@ -10,7 +9,8 @@ const v = new FastestValidator();
  * object "set" for validate input value
  */
 
-export const checkUpdateMenu = v.compile({
+const v = new FastestValidator();
+export const schema = {
   details: {
     type: "object",
     props: {
@@ -62,7 +62,9 @@ export const checkUpdateMenu = v.compile({
       },
     },
   },
-});
+};
+
+export const checkUpdateMenu = v.compile(schema);
 
 /**
  * Represent Input details

@@ -6,7 +6,7 @@ import FastestValidator from "https://esm.sh/fastest-validator@1";
 import { dishes, dishSelectable, Dish, RDish } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
-const check = v.compile({
+export const schema = {
   details: {
     type: "object",
     props: {
@@ -35,7 +35,9 @@ const check = v.compile({
       },
     },
   },
-});
+};
+
+const check = v.compile(schema);
 
 interface addingDishDetails {
   set: {

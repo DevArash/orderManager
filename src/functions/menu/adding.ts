@@ -11,7 +11,7 @@ import { throwError } from "../../utils/mod.ts";
 import { getMenu } from "../mod.ts";
 
 const v = new FastestValidator();
-const check = v.compile({
+export const schema = {
   details: {
     type: "object",
     props: {
@@ -56,7 +56,9 @@ const check = v.compile({
       },
     },
   },
-});
+};
+
+const check = v.compile(schema);
 
 interface addingMenuDetails {
   set: {

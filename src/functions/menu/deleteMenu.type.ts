@@ -10,7 +10,7 @@ import { RMenu, menuSelectable } from "../../schemas/mod.ts";
  */
 
 const v = new FastestValidator();
-export const checkDeleteMenu = v.compile({
+export const schema = {
   details: {
     type: "object",
     strict: "true",
@@ -28,7 +28,10 @@ export const checkDeleteMenu = v.compile({
       },
     },
   },
-});
+};
+
+export const checkDeleteMenu = v.compile(schema);
+
 /**
  * Represent Input details
  * this is input of deleting Menu

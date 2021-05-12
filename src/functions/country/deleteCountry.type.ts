@@ -10,7 +10,7 @@ import { RCountry, countrySelectable } from "../../schemas/mod.ts";
  */
 
 const v = new FastestValidator();
-export const checkDeleteCountry = v.compile({
+export const schema = {
   details: {
     type: "object",
     strict: "true",
@@ -28,7 +28,10 @@ export const checkDeleteCountry = v.compile({
       },
     },
   },
-});
+};
+
+export const checkDeleteCountry = v.compile(schema);
+
 /**
  * Represent Input details
  * this is input of deleting Country

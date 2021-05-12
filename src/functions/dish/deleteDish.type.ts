@@ -10,7 +10,7 @@ import { RDish, dishSelectable } from "../../schemas/mod.ts";
  */
 
 const v = new FastestValidator();
-export const checkDeleteDish = v.compile({
+export const schema = {
   details: {
     type: "object",
     strict: "true",
@@ -28,7 +28,10 @@ export const checkDeleteDish = v.compile({
       },
     },
   },
-});
+};
+
+export const checkDeleteDish = v.compile(schema);
+
 /**
  * Represent Input details
  * this is input of deleting Dish
