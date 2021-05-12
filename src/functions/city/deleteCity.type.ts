@@ -10,7 +10,7 @@ import { RCity, citySelectable } from "../../schemas/mod.ts";
  */
 
 const v = new FastestValidator();
-export const checkDeleteCity = v.compile({
+export const schema = {
   details: {
     type: "object",
     strict: "true",
@@ -28,7 +28,10 @@ export const checkDeleteCity = v.compile({
       },
     },
   },
-});
+};
+
+export const checkDeleteCity = v.compile(schema);
+
 /**
  * Represent Input details
  * this is input of deleting City
