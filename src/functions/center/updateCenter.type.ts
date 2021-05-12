@@ -10,7 +10,7 @@ const v = new FastestValidator();
  * object "set" for validate input value
  */
 
-export const checkUpdateCenter = v.compile({
+export const schema = {
   details: {
     type: "object",
     props: {
@@ -48,7 +48,9 @@ export const checkUpdateCenter = v.compile({
       },
     },
   },
-});
+};
+
+export const checkUpdateCenter = v.compile(schema);
 
 /**
  * Represent Input details

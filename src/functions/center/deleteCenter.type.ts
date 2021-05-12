@@ -10,7 +10,7 @@ import { RCenter, centerSelectable } from "../../schemas/mod.ts";
  */
 
 const v = new FastestValidator();
-export const checkDeleteCenter = v.compile({
+export const schema = {
   details: {
     type: "object",
     strict: "true",
@@ -28,7 +28,10 @@ export const checkDeleteCenter = v.compile({
       },
     },
   },
-});
+};
+
+export const checkDeleteCenter = v.compile(schema);
+
 /**
  * Represent Input details
  * this is input of deleting Center

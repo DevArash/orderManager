@@ -1,6 +1,6 @@
 import { Bson } from "../../../../db.ts";
-import { tables, Table, RTable } from "../../../schemas/table.ts";
 import { throwError } from "../../../utils/mod.ts";
+import { tables, Table, RTable } from "../../../schemas/table.ts";
 import { makeProjections } from "../../../utils/makeProjections.ts";
 
 type GetTableInput = { _id: Bson.ObjectID; get: RTable };
