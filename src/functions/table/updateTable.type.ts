@@ -38,7 +38,7 @@ export const checkUpdateTable = v.compile({
           },
           situation: {
             type: "enum",
-            values: ["Active", "DeActive", "Reserved", "Empty", "Using"],
+            values: ["Active", "DeActive", "Reserved", "Empty", "InUse"],
           },
         },
       },

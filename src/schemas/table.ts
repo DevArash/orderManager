@@ -19,7 +19,7 @@ export enum Situation {
   DeActive = "DeActive",
   Reserved = "Reserved",
   Empty = "Empty",
-  Using = "Using",
+  InUse = "InUse",
 }
 
 export interface PuTable extends Base {
