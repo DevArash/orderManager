@@ -14,10 +14,19 @@ export interface Reserve {
   reservedBy: string;
 }
 
+export enum Situation {
+  Active = "Active",
+  DeActive = "DeActive",
+  Reserved = "Reserved",
+  Empty = "Empty",
+  Using = "Using",
+}
+
 export interface PuTable extends Base {
-  tableNo?: number;
+  tableNo: number;
   tableCapacity: number;
   reserve: Reserve;
+  situation: Situation;
 }
 
 export interface EmTable {
@@ -32,7 +41,8 @@ export interface RTable extends RBase {
   _id: RType;
   tableNo: RType;
   tableCapacity: RType;
-  reservable: RType;
+  reserve: RType;
+  situation: RType;
   centers: RCenter;
 }
 
@@ -44,7 +54,8 @@ export const tableSelectable = (depth: number = 4): any => {
     _id: fieldType,
     tableNo: fieldType,
     tableCapacity: fieldType,
-    reservable: fieldType,
+    reserve: fieldType,
+    situation: fieldType,
   };
   return depth > 0
     ? {
