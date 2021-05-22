@@ -10,6 +10,7 @@ export * from "./recipe.ts";
 export * from "./center.ts";
 export * from "./parish.ts";
 export * from "./country.ts";
+export * from "./category.ts";
 export * from "./utils/rType.ts";
 export * from "./clientRequest.ts";
 export * from "./utils/fieldType.ts";
