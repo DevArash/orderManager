@@ -19,13 +19,13 @@ export const updateTable: UpdateTable = async (details, context) => {
   const detailsIsRight = checkUpdateTable({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { _id, tableNo, tableCapacity, reserve },
+    set: { _id, tableNo, tableCapacity, reserve, situation },
     get,
   } = details;
 
   await tables.updateOne(
     { _id: new Bson.ObjectID(_id) },
-    { $set: { tableNo, tableCapacity, reserve } }
+    { $set: { tableNo, tableCapacity, reserve, situation } }
   );
 
   const foundNewTable = await tables.findOne({

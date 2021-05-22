@@ -1,5 +1,10 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { Reserve, RTable, tableSelectable } from "../../schemas/mod.ts";
+import {
+  Reserve,
+  RTable,
+  Situation,
+  tableSelectable,
+} from "../../schemas/mod.ts";
 const v = new FastestValidator();
 
 /**
@@ -31,6 +36,10 @@ export const checkUpdateTable = v.compile({
               reservedBy: "string",
             },
           },
+          situation: {
+            type: "enum",
+            values: ["Active", "DeActive", "Reserved", "Empty", "Using"],
+          },
         },
       },
       get: {
@@ -57,6 +66,7 @@ export interface UpdateTableDetails {
     tableNo?: number;
     tableCapacity: number;
     reserve: Reserve;
+    situation: Situation;
   };
   get: RTable;
 }

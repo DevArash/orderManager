@@ -2,7 +2,13 @@ import { getTable } from "../mod.ts";
 import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
 import FastestValidator from "https://esm.sh/fastest-validator@1";
-import { tables, Table, RTable, Reserve } from "../../schemas/mod.ts";
+import {
+  tables,
+  Table,
+  RTable,
+  Reserve,
+  Situation,
+} from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -21,6 +27,10 @@ const check = v.compile({
               reservedBy: "string",
             },
           },
+          situation: {
+            type: "enum",
+            values: ["Active", "DeActive", "Reserved", "Empty", "Using"],
+          },
         },
         /*         get: {
           //When Comment Work
@@ -38,6 +48,7 @@ interface addingTableDetails {
     tableNo?: number;
     tableCapacity: number;
     reserve: Reserve;
+    situation: Situation;
   };
   get: RTable;
 }
@@ -48,13 +59,14 @@ export const addingTable: AddingTable = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { tableNo, tableCapacity, reserve },
+    set: { tableNo, tableCapacity, reserve, situation },
     get,
   } = details;
   const createdTable = await tables.insertOne({
     tableNo,
     tableCapacity,
     reserve,
+    situation,
   });
   console.log(createdTable);
   const ob = new Bson.ObjectID(createdTable);
