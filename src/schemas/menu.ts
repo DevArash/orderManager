@@ -1,18 +1,8 @@
 import db from "../../db.ts";
-import { Base, RType, fieldType, Dish } from "./mod.ts";
-
-export interface MenuCategory {
-  title: string;
-  description?: string;
-  dishes: Dish[];
-}
+import { Base, RType, fieldType } from "./mod.ts";
 
 export interface PuMenu extends Base {
   name: string;
-  subHeading?: string;
-  icon?: string;
-  description?: string;
-  menuCategory: MenuCategory[];
 }
 
 export interface Menu extends PuMenu {}
@@ -20,10 +10,6 @@ export interface Menu extends PuMenu {}
 export interface RMenu {
   _id: RType;
   name: RType;
-  subHeading: RType;
-  icon: RType;
-  description: RType;
-  menuCategory: RType;
 }
 
 export const menuSelectable = (depth: number = 4) => {
@@ -31,10 +17,6 @@ export const menuSelectable = (depth: number = 4) => {
   const returnObj = {
     _id: fieldType,
     name: fieldType,
-    subHeading: fieldType,
-    icon: fieldType,
-    description: fieldType,
-    menuCategory: fieldType,
   };
 };
 

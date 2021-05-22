@@ -19,14 +19,11 @@ export const updateMenu: UpdateMenu = async (details, context) => {
   const detailsIsRight = checkUpdateMenu({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { _id, name, subHeading, icon, description, menuCategory },
+    set: { _id, name },
     get,
   } = details;
 
-  await menus.updateOne(
-    { _id: new Bson.ObjectID(_id) },
-    { $set: { name, subHeading, icon, description, menuCategory } }
-  );
+  await menus.updateOne({ _id: new Bson.ObjectID(_id) }, { $set: { name } });
 
   const foundNewMenu = await menus.findOne({
     _id: new Bson.ObjectID(_id),

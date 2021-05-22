@@ -1,12 +1,6 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { Bson } from "../../../db.ts";
-import {
-  menus,
-  menuSelectable,
-  Menu,
-  RMenu,
-  MenuCategory,
-} from "../../schemas/menu.ts";
+import { menus, menuSelectable, Menu, RMenu } from "../../schemas/menu.ts";
 import { throwError } from "../../utils/mod.ts";
 import { getMenu } from "../mod.ts";
 
@@ -19,34 +13,6 @@ export const schema = {
         type: "object",
         props: {
           name: { type: "string" },
-          subHeading: { type: "string", optional: true },
-          icon: { type: "any", optional: true },
-          description: { type: "string", optional: true },
-          menuCategory: {
-            type: "object",
-            props: {
-              title: { type: "string" },
-              description: { type: "string", optional: true },
-              dishes: {
-                type: "object",
-                props: {
-                  name: { type: "string" },
-                  price: { type: "number" },
-                  discount: { type: "number", optional: true },
-                  recipe: {
-                    type: "object",
-                    optional: true,
-                    props: {
-                      description: { type: "string" },
-                      ingredients: { type: "string" },
-                    },
-                  },
-                  photos: { type: "string" },
-                  calorie: { type: "number", optional: true },
-                },
-              },
-            },
-          },
         },
       },
       get: {
@@ -63,10 +29,6 @@ const check = v.compile(schema);
 interface addingMenuDetails {
   set: {
     name: string;
-    subHeading?: string;
-    icon?: File;
-    description?: string;
-    menuCategory: MenuCategory[];
   };
   get: RMenu;
 }
@@ -77,15 +39,11 @@ export const addingMenu: AddingMenu = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, subHeading, icon, description, menuCategory },
+    set: { name },
     get,
   } = details;
   const createdMenu = await menus.insertOne({
     name,
-    subHeading,
-    icon,
-    description,
-    menuCategory,
   });
   console.log(createdMenu);
   const ob = new Bson.ObjectID(createdMenu);
