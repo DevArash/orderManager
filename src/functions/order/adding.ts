@@ -8,7 +8,6 @@ import {
   OrderStatus,
   OrderType,
 } from "../../schemas/mod.ts";
-import { Rating } from "../../schemas/rating.ts";
 import { throwError } from "../../utils/mod.ts";
 import { getOrder } from "../mod.ts";
 

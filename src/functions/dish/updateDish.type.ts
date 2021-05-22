@@ -1,5 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { RDish, dishSelectable, Recipe, Rating } from "../../schemas/mod.ts";
+import { RDish, dishSelectable, Recipe } from "../../schemas/mod.ts";
 
 /**
  * this is validator for update dish

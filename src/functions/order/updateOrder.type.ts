@@ -4,7 +4,6 @@ import {
   OrderType,
   ROrder,
   orderSelectable,
-  Rating,
 } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();

@@ -6,7 +6,6 @@ export * from "./dish.ts";
 export * from "./state.ts";
 export * from "./order.ts";
 export * from "./table.ts";
-export * from "./rating.ts";
 export * from "./recipe.ts";
 export * from "./center.ts";
 export * from "./parish.ts";
