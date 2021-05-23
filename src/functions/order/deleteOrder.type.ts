@@ -18,7 +18,7 @@ export const checkDeleteOrder = v.compile({
       set: {
         type: "object",
         props: {
-          _id: { type: "string" },
+          id: { type: "string" },
         },
       },
       get: {
@@ -38,7 +38,7 @@ export const checkDeleteOrder = v.compile({
  */
 export interface DeleteOrderDetails {
   set: {
-    _id: string;
+    id: string;
   };
   get: ROrder;
 }

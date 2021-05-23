@@ -1,4 +1,3 @@
-import { getOrder } from "../mod.ts";
 import { Bson } from "../../../db.ts";
 import { throwError } from "../../utils/mod.ts";
 import { Context } from "../utils/context.ts";
@@ -29,9 +28,9 @@ export const deleteOrderFn: DeleteOrder = async (details, context) => {
   const detailsIsRight = checkDeleteOrder({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { _id },
+    set: { id },
     get: {},
   } = details;
-  const objId = new Bson.ObjectID(_id);
+  const objId = new Bson.ObjectID(id);
   return deleteOrder(objId);
 };
