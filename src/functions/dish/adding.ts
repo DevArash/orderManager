@@ -26,7 +26,7 @@ export const schema = {
           },
           photos: { type: "string" },
           calorie: { type: "number", optional: true },
-          preparation: { type: "number" },
+          preparationTime: { type: "number" },
         },
       },
       get: {
@@ -48,7 +48,7 @@ interface addingDishDetails {
     recipe?: Recipe;
     photos: string[];
     calorie?: number;
-    preparation: number;
+    preparationTime: number;
   };
   get: RDish;
 }
@@ -59,7 +59,7 @@ export const addingDish: AddingDish = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { name, price, discount, recipe, photos, calorie, preparation },
+    set: { name, price, discount, recipe, photos, calorie, preparationTime },
     get,
   } = details;
   const createdDish = await dishes.insertOne({
@@ -69,7 +69,7 @@ export const addingDish: AddingDish = async (details) => {
     recipe,
     photos,
     calorie,
-    preparation,
+    preparationTime,
   });
   console.log(createdDish);
   const ob = new Bson.ObjectID(createdDish);

@@ -19,13 +19,24 @@ export const updateDish: UpdateDish = async (details, context) => {
   const detailsIsRight = checkUpdateDish({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: { _id, name, price, discount, recipe, photos, calorie },
+    set: {
+      _id,
+      name,
+      price,
+      discount,
+      recipe,
+      photos,
+      calorie,
+      preparationTime,
+    },
     get,
   } = details;
 
   await dishes.updateOne(
     { _id: new Bson.ObjectID(_id) },
-    { $set: { name, price, discount, recipe, photos, calorie } }
+    {
+      $set: { name, price, discount, recipe, photos, calorie, preparationTime },
+    }
   );
 
   const foundNewDish = await dishes.findOne({

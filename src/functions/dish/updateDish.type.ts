@@ -31,6 +31,7 @@ export const schema = {
           },
           photos: { type: "string", optional: true },
           calorie: { type: "number", optional: true },
+          preparationTime: { type: "number" },
         },
       },
       get: {
@@ -62,6 +63,7 @@ export interface UpdateDishDetails {
     recipe?: Recipe;
     photos: string[];
     calorie?: number;
+    preparationTime: number;
   };
   get: RDish;
 }
