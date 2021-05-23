@@ -7,6 +7,7 @@ export interface PuDish extends Base {
   recipe?: Recipe;
   photos: string[];
   calorie?: number;
+  preparationTime: number;
 }
 
 export interface Dish extends PuDish {}
@@ -16,9 +17,10 @@ export interface RDish {
   name: RType;
   price: RType;
   discont?: RType;
-  recepies?: RType;
+  recipe?: RType;
   photos: RType;
   calorie?: RType;
+  preparationTime: RType;
 }
 
 export const dishSelectable = (depth: number = 4) => {
@@ -28,9 +30,10 @@ export const dishSelectable = (depth: number = 4) => {
     name: fieldType,
     price: fieldType,
     discont: fieldType,
-    recepies: fieldType,
+    recipe: fieldType,
     photos: fieldType,
     calorie: fieldType,
+    preparationTime: fieldType,
   };
   returnObj;
 };
