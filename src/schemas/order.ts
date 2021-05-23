@@ -1,7 +1,7 @@
 import db from "../../db.ts";
 import { Base, RType, fieldType, Dish, dishSelectable, RDish } from "./mod.ts";
 
-export enum OrderStatus {
+export enum OrderLable {
   InPreparation = "INPREPARATION",
   Delivered = "DELIVERED",
   Canceled = "CANCELED",
@@ -9,16 +9,13 @@ export enum OrderStatus {
   SeenByChef = "SEENBYCHEF",
 }
 
-export enum OrderType {
-  Table = "TABLE",
-  Takeout = "TAKEOUT",
+export interface OrderStatus {
+  orderLable: OrderLable;
+  time: Date;
 }
+
 export interface PuOrder extends Base {
-  orderType: OrderType;
   orderStatus: OrderStatus;
-  orderID: number;
-  totalPrice: number;
-  preprationTime?: Date;
 }
 
 export interface EmOrder {
@@ -36,10 +33,6 @@ export interface Order extends PuOrder, EmOrder {}
 export interface ROrder {
   _id: RType;
   orderStatus: RType;
-  totalPrice: RType;
-  orderType: RType;
-  preprationTime: RType;
-  customerPhoneNumber: RType;
   dish: RDish;
 }
 
@@ -48,10 +41,6 @@ export const orderSelectable = (depth: number = 4) => {
   const returnObj = {
     _id: fieldType,
     orderStatus: fieldType,
-    totalPrice: fieldType,
-    orderType: fieldType,
-    preprationTime: fieldType,
-    customerPhoneNumber: fieldType,
   };
   return depth > 0
     ? {
