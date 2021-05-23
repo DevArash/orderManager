@@ -19,37 +19,26 @@ export const updateOrder: UpdateOrder = async (details, context) => {
   const detailsIsRight = checkUpdateOrder({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: {
-      _id,
-      orderStatus,
-      totalPrice,
-      orderType,
-      preprationTime,
-      customerPhoneNumber,
-    },
+    set: { id, orderStatus },
     get,
   } = details;
 
   await orders.updateOne(
-    { _id: new Bson.ObjectID(_id) },
+    { _id: new Bson.ObjectID(id) },
     {
       $set: {
+        id,
         orderStatus,
-        totalPrice,
-        orderType,
-        preprationTime,
-        customerPhoneNumber,
       },
     }
   );
 
   const foundNewOrder = await orders.findOne({
-    _id: new Bson.ObjectID(_id),
+    _id: new Bson.ObjectID(id),
   });
 
-  //2 update Order in Menu And Table collection
   await dishes.updateMany(
-    { "order._id": new Bson.ObjectID(_id) },
+    { "order._id": new Bson.ObjectID(id) },
     { $set: { order: foundNewOrder } }
   );
 

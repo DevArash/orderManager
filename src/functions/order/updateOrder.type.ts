@@ -1,10 +1,5 @@
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import {
-  OrderStatus,
-  OrderType,
-  ROrder,
-  orderSelectable,
-} from "../../schemas/mod.ts";
+import { OrderStatus, ROrder, orderSelectable } from "../../schemas/mod.ts";
 
 const v = new FastestValidator();
 
@@ -27,20 +22,23 @@ export const checkUpdateOrder = v.compile({
           /**
            * The Values of the order that is going to be updated
            */
-          _id: { type: "string", optional: true },
+          id: { type: "string" },
           orderStatus: {
-            type: "string",
-            optional: true,
-            values: ["InPreparation", "Delivered", "Canceled"],
+            type: "object",
+            props: {
+              orderLable: {
+                type: "enum",
+                values: [
+                  "InPreparation",
+                  "Delivered",
+                  "Canceled",
+                  "SeenByOprator",
+                  "SeenByChef",
+                ],
+              },
+              time: "date",
+            },
           },
-          totalPrice: { type: "number", optional: true },
-          orderType: {
-            type: "enum",
-            optional: true,
-            values: ["Table", "Takeout"],
-          },
-          preprationTime: { type: "date", optional: true },
-          customerPhoneNumber: { type: "number", optional: true },
         },
       },
       get: {
@@ -62,13 +60,9 @@ export const checkUpdateOrder = v.compile({
 export interface UpdateOrderDetails {
   set: {
     //this is the _id of the Order that we want to update
-    _id: string;
+    id: string;
     //these fields are the fields that can be modified
     orderStatus: OrderStatus;
-    totalPrice: number;
-    orderType: OrderType;
-    preprationTime?: Date;
-    customerPhoneNumber: number;
   };
   get: ROrder;
 }
