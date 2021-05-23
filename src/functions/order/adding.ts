@@ -6,7 +6,6 @@ import {
   Order,
   ROrder,
   OrderStatus,
-  OrderType,
 } from "../../schemas/mod.ts";
 import { throwError } from "../../utils/mod.ts";
 import { getOrder } from "../mod.ts";
@@ -19,17 +18,23 @@ const check = v.compile({
       set: {
         type: "object",
         props: {
+          id: { type: "string" },
           orderStatus: {
-            type: "string",
-            values: ["InPreparation", "Delivered", "Canceled"],
+            type: "object",
+            props: {
+              orderLable: {
+                type: "enum",
+                values: [
+                  "InPreparation",
+                  "Delivered",
+                  "Canceled",
+                  "SeenByOprator",
+                  "SeenByChef",
+                ],
+              },
+              time: "date",
+            },
           },
-          totalPrice: { type: "number" },
-          orderType: {
-            type: "enum",
-            values: ["Table", "Takeout"],
-          },
-          preprationTime: { type: "date", optional: true },
-          customerPhoneNumber: { type: "number" },
         },
       },
       get: {
@@ -43,11 +48,8 @@ const check = v.compile({
 
 interface addingOrderDetails {
   set: {
+    id: string;
     orderStatus: OrderStatus;
-    totalPrice: number;
-    orderType: OrderType;
-    preprationTime?: Date;
-    customerPhoneNumber: number;
   };
   get: ROrder;
 }
@@ -58,21 +60,12 @@ export const addingOrder: AddingOrder = async (details) => {
   const detailsIsRight = check({ details });
   detailsIsRight !== true && throwError(detailsIsRight[0].message);
   const {
-    set: {
-      orderStatus,
-      totalPrice,
-      orderType,
-      preprationTime,
-      customerPhoneNumber,
-    },
+    set: { id, orderStatus },
     get,
   } = details;
   const createdOrder = await orders.insertOne({
+    id,
     orderStatus,
-    totalPrice,
-    orderType,
-    preprationTime,
-    customerPhoneNumber,
   });
   console.log(createdOrder);
   const ob = new Bson.ObjectID(createdOrder);
