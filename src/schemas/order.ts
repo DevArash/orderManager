@@ -15,6 +15,7 @@ export interface OrderStatus {
 }
 
 export interface PuOrder extends Base {
+  id: string;
   orderStatus: OrderStatus;
 }
 
@@ -31,7 +32,7 @@ export interface OutRelOrder {}
 export interface Order extends PuOrder, EmOrder {}
 
 export interface ROrder {
-  _id: RType;
+  id: RType;
   orderStatus: RType;
   dish: RDish;
 }
@@ -39,7 +40,7 @@ export interface ROrder {
 export const orderSelectable = (depth: number = 4) => {
   depth--;
   const returnObj = {
-    _id: fieldType,
+    id: fieldType,
     orderStatus: fieldType,
   };
   return depth > 0
